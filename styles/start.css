@@ -1,0 +1,142 @@
+* {
+  font-family: 'Nunito', sans-serif;
+  box-sizing: border-box;
+}
+.light {
+  font-weight: 300;
+}
+.regular {
+  font-weight: 400;
+}
+.medium {
+  font-weight: 500;
+}
+.semi-bold {
+  font-weight: 600;
+}
+.bold {
+  font-weight: 700;
+}
+a:hover {
+  font-weight: 700;
+}
+
+/* - - - - - - - */
+
+body {
+  background-color: rgb(92,144,168);
+  background-image: url('../img/lake_background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: multiply;
+}
+div#maincontent {
+  position: fixed;
+  top: 15vh;
+  left: 30vw;
+  width: 40vw;
+  height: 40vw;
+  margin: 0;
+  background-color: rgba(236,236,236,0.25);
+  border-radius: 50%;
+}
+  #maincontent img {
+    width: 25%;
+    margin: 5% 37.5%;
+    display: inline-block;
+    opacity: 1;
+  }
+  div#login_form {
+    width: 80%;
+    margin: 5% 7.5%;
+    color: #ececec;
+    text-align: center;
+  }
+    div#login_form label {
+      font-size: 1.1em;
+      line-height: 3em;
+      width: 30%;
+      display: inline-block;
+      text-align: right;
+      font-weight: 700;
+    }
+    div#login_form input.login_form_input {
+      width: 45%;
+      height: 3em;
+      border-radius: 5px;
+      margin: 10px;
+      border: none;
+      background-color: #ececec;
+    }
+    div#login_form input#login_button {
+      width: 120px;
+      height: 40px;
+      border: none;
+      background-color: rgba(0, 0, 0, 0);
+      background-image: url('../img/arrow_1.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: right;
+      margin-top: 100px;
+    }
+      div#login_form input#login_button:hover {
+
+      }
+    a#createuser_link {
+      color: #ececec;
+      text-decoration: none;
+      font-weight: 300;
+      width: 70%;
+      margin-left: 10%;
+      font-size: 0.9em;
+      line-height: 2em;
+    }
+
+div#signup_form {
+  width: 80%;
+  margin: 20% 4.5%;
+  color: #ececec;
+  text-align: center;
+}
+  div#signup_form label {
+    font-size: 1.1em;
+    line-height: 3em;
+    width: 40%;
+    display: inline-block;
+    text-align: right;
+    font-weight: 700;
+  }
+  div#signup_form input.signup_form_input {
+    width: 45%;
+    height: 3em;
+    border-radius: 5px;
+    margin: 10px;
+    border: none;
+    background-color: #ececec;
+  }
+/* - - - - - avatar button styling - - - - - - */
+  div#signup_form .inputavatar {
+    width: 0.1px;
+    height: 0.1px;
+    overflow: hidden;
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+  }
+  div#signup_form label#upload_avatar {
+    width: 45%;
+    height: 2em;
+    border-radius: 5px;
+    margin: 10px;
+    border: none;
+    background-color: #ececec;
+    color: #000;
+    cursor: pointer;
+    font-size: 1.1em;
+    line-height: 2em;
+    text-align: left;
+    padding-left: 10px;
+  }
+    div#signup_form input#signup_button:hover {
+
+    }
