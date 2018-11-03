@@ -14,7 +14,7 @@
 
 <div id="signup_form">
 
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" enctype="multipart/form-data">
+<form method="post" action="./parse-signup.php">
 
   <label>användarnamn: </label><input class="signup_form_input" type="text" name="new_username" value="<?php echo "$new_username";?>" /> <span class="errormsg"> <?php echo $username_err ?> </span> <br />
 
@@ -27,6 +27,8 @@
   <input id="signup_button" type="submit" name="submit" value="Skapa användare!" />
 
 </form>
+
+<span><?php echo "$errormsg"; ?></span>
 
 </div>
 

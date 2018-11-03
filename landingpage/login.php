@@ -20,7 +20,7 @@
 
   <label>lösenord: </label><input class="login_form_input" type="password" name="input_password" /><br />
 
-  <a href="createuser.html" id="createuser_link">
+  <a href="signup.php" id="createuser_link">
     har du inget konto än? skapa ett nu!
   </a><br />
 
