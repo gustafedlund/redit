@@ -24,7 +24,7 @@
     har du inget konto än? skapa ett nu!
   </a><br />
 
-  <input id="login_button" type="submit" value="" />
+  <input id="login_button" type="submit" name="login_submit" />
 
 </form>
 

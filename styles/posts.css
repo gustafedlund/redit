@@ -1,0 +1,95 @@
+div.thread-show {
+width: 60vw;
+display: inline-block;
+padding: 3vh 2vw;
+margin-left: 20vw;
+position: relative;
+min-height: 140px;
+}
+div.thread-show:nth-child(even) {
+background-color: rgba(92,144,168,0.4);
+}
+div.thread-show:nth-child(odd) {
+background-color: rgba(92,144,168,0.5);
+}
+div.thread-show .thread-left {
+  float: left;
+  width: 85%;
+}
+  div.thread-show p.thread-title {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin: 0;
+    position: absolute;
+    top: 2vh;
+  }
+  div.thread-show p.firstpost {
+    font-size: 0.8em;
+    margin: 0;
+    position: absolute;
+    top: 6.5vh;
+    width: 80%;
+  }
+div.thread-show .thread-right {
+  float: right;
+}
+  .thread-right .upvote,
+  .thread-right .downvote {
+    display: block;
+    width: 2vw;
+    height: 5vh;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .thread-right .upvote {
+    background-image: url(../img/upvote.png);
+    position: absolute;
+    top: 2.5vh;
+    right: 1.5vw;
+  }
+    .thread-right .upvote:hover {
+      background-image: url(../img/upvote_blue.png);
+    }
+  .thread-right .downvote {
+    background-image: url(../img/downvote.png);
+    position: absolute;
+    bottom: 0vh;
+    right: 1.5vw;
+  }
+    .thread-right .downvote:hover {
+      background-image: url(../img/downvote_blue.png);
+    }
+  .thread-right .post_rating {
+    font-weight: 700;
+    font-size: 1.2em;
+    letter-spacing: 0.1em;
+    color: #ececec;
+    position: absolute;
+    bottom: 45%;
+    right: 1.4vw;
+    font-family: monospace;
+  }
+div.thread-show .thread-info {
+  font-size: 0.75em;
+  font-weight: 300;
+  position: absolute;
+  left: 2vw;
+  bottom: 1.75vh;
+  line-height: 1em;
+}
+  div.thread-show span.divider {
+    padding: 0 0.25em;
+  }
+  div.thread-show span.comment_symbol {
+    width: 1em;
+    height: 1em;
+    margin-bottom: -0.2em;
+    background-image: url(../img/com_symbol_blk.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+  }
+  div.thread-show a.author {
+    text-decoration: none;
+    color: #000;
+  }
