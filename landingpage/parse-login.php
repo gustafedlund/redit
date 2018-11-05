@@ -5,7 +5,7 @@ if (isset($_POST['login_submit'])) { //did the user access this page by clicking
     require '../init/config.php';
 
     $uid = $_POST['input_username'];
-    $pwd = $_PST['input_password'];
+    $pwd = $_POST['input_password'];
 
     if (empty($uid) || empty($pwd)) {
       header("Location: ./login.php?error=emptyfields");
@@ -40,7 +40,9 @@ if (isset($_POST['login_submit'])) { //did the user access this page by clicking
             exit();
           }
           elseif ($pwd_check == true) {
+
             //logged in! start session and set global session variables
+            
             session_start();
 
             $_SESSION['user_id'] = $row['user_id'];

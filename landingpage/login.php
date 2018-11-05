@@ -14,7 +14,7 @@
 
 <div id="login_form">
 
-<form>
+<form method="post" action="./parse-login.php">
 
   <label>användarnamn: </label><input class="login_form_input" type="text" name="input_username" /><br />
 
