@@ -1,4 +1,10 @@
-<?php session_start(); ?>
+<?php
+
+session_start();
+
+include  '../init/config.php';
+
+?>
 
 <!DOCTYPE html>
 <html>
@@ -16,19 +22,17 @@
 
 <form method="post" action="./parse-signup.php">
 
-  <label>användarnamn: </label><input class="signup_form_input" type="text" name="new_username" value="<?php echo "$new_username";?>" /> <span class="errormsg"> <?php echo $username_err ?> </span> <br />
+  <label>användarnamn: </label><input class="signup_form_input" type="text" name="uid" /> <span class="errormsg"> <?php echo $username_err ?> </span> <br />
 
-  <label>lösenord: </label><input class="signup_form_input" type="password" name="new_password" value="<?php echo "$new_password";?>" /> <span class="errormsg"> <?php echo $password_err ?> </span> <br />
+  <label>lösenord: </label><input class="signup_form_input" type="password" name="pwd" /> <span class="errormsg"> <?php echo $password_err ?> </span> <br />
 
-  <label>bekräfta lösenord: </label><input class="signup_form_input" type="password" name="new_password_confirmation" /> <span class="errormsg"> <?php echo $password_confirm_err ?> </span> <br />
+  <label>bekräfta lösenord: </label><input class="signup_form_input" type="password" name="pwd_rpt" /> <span class="errormsg"> <?php echo $password_confirm_err ?> </span> <br />
 
-  <label>e-mail: </label><input class="signup_form_input" type="email" name="new_email" value="<?php echo "$new_email";?>" /> <span class="errormsg"> <?php echo $email_err ?> </span> <br />
+  <label>e-mail: </label><input class="signup_form_input" type="email" name="mail" /> <span class="errormsg"> <?php echo $email_err ?> </span> <br />
 
-  <input id="signup_button" type="submit" name="submit" value="Skapa användare!" />
+  <input id="signup_button" type="submit" name="signup_submit" value="Skapa användare!" />
 
 </form>
-
-<span><?php echo "$errormsg"; ?></span>
 
 </div>
 
