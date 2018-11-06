@@ -13,26 +13,8 @@
   <title>Redit</title>
 </head>
 <body>
-  <!-- S I D E B A R - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-  <div id="sidebar">
-    <a href="index.php"><img src="./img/logo_text_gr.png" /></a>
-    <a href="index.html" class="category regular">bygdababbel</a>
-    <a href="index.html" class="category regular">skola</a>
-    <a href="index.html" class="category regular">politik</a>
-    <a href="index.html" class="category regular">volvo</a>
-    <a href="index.html" class="category regular">händelser</a>
-    <a href="index.html" class="category regular">nyheter</a>
-    <a href="index.html" class="category regular">meme</a>
-    <a href="index.html" class="category regular">dagens bild</a>
-      <div id='char-indicator'>
-        <span id='avatar'></span>
-        <div id='char-info'>
-          <span id='username' class='bold'> <?php echo $_SESSION['username']; ?> </span> <br />
-          <span id='redighet' class='light'>redighet: <span id='redighet' class='semi-bold'>36%</span></span><br />
-          <a href='mypage.php'>min sida</a>
-        </div>
-    </div>
-  </div>
+<!-- S I D E B A R - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<?php include "./init/sidebar.php" ?>
 <!-- M A I N - C O N T E N T - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 <?php require "posts/print-posts.php"; ?>
   <div class="maincontent">
