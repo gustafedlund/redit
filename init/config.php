@@ -13,4 +13,6 @@ if(!$conn) {
   die("connection failed: " . mysqli_connect_error());
 }
 
+date_default_timezone_set("Europe/Stockholm");
+
 ?>
