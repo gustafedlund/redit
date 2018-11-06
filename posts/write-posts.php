@@ -50,7 +50,7 @@ if (isset($_POST['post_submit'])) {
       exit();
     }
 
-    // is file the right format?
+    // is file the right format? - - - - - - - i'm stuck here fam
 
     if(!in_array($imageFileType, $allowed)) {
       header("Location: ./write-posts.php?error=wrongformat");
@@ -71,7 +71,7 @@ if (isset($_POST['post_submit'])) {
       exit();
     }
     else {
-      if (move_uploaded_file($_FILES["post_img"]["tmp_name"], $target_file)) {
+      if (move_uploaded_file($_FILES["post_img"]["name"], $target_file)) {
         header("Location: ./write-posts.php?success=fileuploaded");
         exit();
       }
@@ -121,7 +121,7 @@ if (isset($_POST['post_submit'])) {
 <form method="post" action="write-posts.php" id="write_post_form">
   <label for="post_title_input">titel: </label><input type="text" name="post_title" id="post_title_input" /><br />
   <label for="post_text_input">inlägg: </label><textarea name="post_text" id="post_text_input" rows="10" cols="40" placeholder="Skriv inlägg..."></textarea> <br />
-  <label for="post_file_upload">bild: </label><input type="file" name="post_img" id="post_file_upload" /> <br />
+  <label for="post_img">bild: </label><input type="file" name="post_img" id="post_img" /> <br />
 
   <label for="category_selector">kategori: </label>
     <select name="categories" form="write_post_form">
