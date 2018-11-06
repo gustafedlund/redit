@@ -34,27 +34,47 @@
     </div>
   </div>
 <!-- M A I N - C O N T E N T - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-
+<?php require "posts/print-posts.php"; ?>
   <div class="maincontent">
 
     <div class='thread-show'>
       <div class='thread-left'>
         <p class='thread-title' class='bold'>
-          sample post title
+          <?php echo $title; ?>
         </p>
         <p class='firstpost'>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...
+          <?php echo $content; ?>
         </p>
       </div>
       <div class='thread-right'>
-        <span class='upvote' id='specificpost_up1'></span>
-        <span class='post_rating' id='specificpost_rating1'>+34</span>
+        <a class='upvote' id='specificpost_up1' onclick="<?php
+
+          $con = mysqli_connect("localhost", "root", "root", "redit");
+          if(!$con) {
+            die("Connection failed: " . mysqli_connect_error());
+          }
+          $query = mysqli_query($con, "UPDATE posts SET post_likes = ('$likes' + 1) WHERE post_id = '$id'");
+
+          mysqli_close($con);
+
+         ?>"></a>
+       <span class='post_rating' id='specificpost_rating1'><?php
+
+          $con = mysqli_connect("localhost", "root", "root", "redit");
+          if(!$con) {
+            die("Connection failed: " . mysqli_connect_error());
+          }
+          $resultsd1 = mysqli_query($con, "SELECT post_likes FROM posts WHERE post_id = '$id'");
+          $row = mysqli_fetch_assoc($resultsd1);
+          echo $row['post_likes'];
+
+          ?></span>
         <span class='downvote' id='specificpost_down1'></span>
       </div>
       <div class='thread-info'>
         <span class='no_of_comments'>4 </span><span class='comment_symbol'></span> <span class='divider'>/</span>
-        <a href='userpage' class='author' id='spec_author'>what_is_up</a> <span class='divider'>/</span>
-        <span class='date_posted' id='spec_post_date'>2018-10-14 18:22</span>
+        <a href='userpage' class='author' id='spec_author'> <?php echo $creator; ?> </a> <span class='divider'>/</span>
+        <span class='date_posted' id='spec_post_date'> <?php echo $date; ?> </span>
       </div>
     </div>
 
