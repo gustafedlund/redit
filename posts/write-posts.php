@@ -4,29 +4,30 @@ require "../init/config.php";
 
 if (isset($_POST['post_submit'])) {
 
-  $post_title = $_POST['post_title_input'];
-  $post_text = $_POST['post_text_input'];
-  $post_img = $_POST['post_file_upload'];
+  $post_title = $_POST['post_title'];
+  $post_text = $_POST['post_text'];
+  $post_img = $_POST['post_img'];
   $post_category = $_POST['categories'];
   $post_creator = $_SESSION['username'];
-  $post_date = 
+  $post_date = date("Y/m/d");
 
   if (empty($post_title) || empty($post_text) || empty($post_category)) {
     header("Location: ./write-posts.php?error=emptyfields");
     exit(); //if user makes a mistake, this stops code from running
   }
-  elseif (!preg_match("/^[A-Za-z åäö ÅÄÖ 0-9_-.,;:)(]*$/", $post_title) && !preg_match("/^[A-Za-z åäö ÅÄÖ 0-9_-.,;:)(]*$/", $post_text)) {
+  elseif (!preg_match("/^[A-Za-z åäö ÅÄÖ 0-9]*$/", $post_title) && !preg_match("/^[A-Za-z åäö ÅÄÖ 0-9]*$/", $post_text)) {
     header("Location: ./write-posts.php?error=forbiddenchars");
     exit();
   }
-  elseif(isset($_POST['post_img'])) {
+  if(!empty($_POST['post_img'])) {
 
     $target_dir = "../uploads/upload_posts";
     $target_file = $target_dir . basename($_FILES["post_img"]["name"]);
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+    $allowed = array('jpg', 'jpeg', 'png', 'gif');
 
-    $check = getimagesize($_FILES["post_img"]["tmp_name"]);
+    /*$check = getimagesize($_FILES["post_img"]["tmp_name"]);
 
     // is file an image?
 
@@ -39,7 +40,7 @@ if (isset($_POST['post_submit'])) {
       header("Location: ./write-posts.php?error=notanimage");
       $uploadOk = 0;
       exit();
-    }
+    }*/
 
     // is file too large?
 
@@ -51,11 +52,17 @@ if (isset($_POST['post_submit'])) {
 
     // is file the right format?
 
-    if ($imageFileType !== "jpg" && $imageFileType !== "jpeg" && $imageFileType !== "png" && $imageFileType !== "gif") {
+    if(!in_array($imageFileType, $allowed)) {
       header("Location: ./write-posts.php?error=wrongformat");
       $uploadOk = 0;
       exit();
     }
+
+    /*if ($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType != "png" && $imageFileType != "gif") {
+      header("Location: ./write-posts.php?error=wrongformat");
+      $uploadOk = 0;
+      exit();
+    }*/
 
     // is file uploaded?
 
@@ -77,7 +84,28 @@ if (isset($_POST['post_submit'])) {
   }
 
   if (!empty($_POST['post_title'])  && !empty($_POST['post_text']) && empty($_POST['post_img'])) {
-    $sql = "INSERT INTO posts"
+    $sql = "INSERT INTO posts (post_title, post_content, post_category, post_creator, post_date) VALUES ('$post_title', '$post_text', '$post_category', '$post_creator', '$post_date')";
+
+    if(mysqli_query($conn, $sql)) {
+      header("Location: ./write-posts.php?success=postcreated");
+      exit();
+    } else {
+      header("Location: ./write-posts.php?error=notposted&err=" . mysqli_error($conn));
+      exit();
+    }
+
+  }
+  elseif (!empty($_POST['post_title'])  && !empty($_POST['post_text']) && !empty($_POST['post_img'])) {
+    $sql = "INSERT INTO posts (post_title, post_content, post_img, post_category, post_creator, post_date) VALUES ('$post_title', '$post_text', '$target_file', '$post_category', '$post_creator', '$post_date')";
+
+    if(mysqli_query($conn, $sql)) {
+      header("Location: ./write-posts.php?success=postcreated");
+      exit();
+    } else {
+      header("Location: ./write-posts.php?error=notposted&err=" . mysqli_error($conn));
+      exit();
+    }
+
   }
 
 
