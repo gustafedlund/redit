@@ -42,7 +42,7 @@ if (isset($_POST['login_submit'])) { //did the user access this page by clicking
           elseif ($pwd_check == true) {
 
             //logged in! start session and set global session variables
-            
+
             session_start();
 
             $_SESSION['user_id'] = $row['user_id'];

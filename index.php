@@ -1,6 +1,6 @@
 <?php
   require "./init/config.php";
-  //include "posts/print-posts.php";
+  include "posts/print-posts.php";
  ?>
 <!DOCTYPE html>
 <html lang="en">
