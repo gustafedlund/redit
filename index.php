@@ -10,6 +10,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="styles/posts.css">
   <link rel="stylesheet" href="styles/main.css">
+  <script type="text/javascript" src="likeScript.js"></script>
   <title>Redit</title>
 </head>
 <body>
@@ -47,17 +48,7 @@
         </p>
       </div>
       <div class='thread-right'>
-        <a class='upvote' id='specificpost_up1' onclick="<?php
-
-          $con = mysqli_connect("localhost", "root", "root", "redit");
-          if(!$con) {
-            die("Connection failed: " . mysqli_connect_error());
-          }
-          $query = mysqli_query($con, "UPDATE posts SET post_likes = ('$likes' + 1) WHERE post_id = '$id'");
-
-          mysqli_close($con);
-
-         ?>"></a>
+        <a class='upvote' id='specificpost_up1' onclick="likes();"></a>
        <span class='post_rating' id='specificpost_rating1'><?php
 
           $con = mysqli_connect("localhost", "root", "root", "redit");
