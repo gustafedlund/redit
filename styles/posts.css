@@ -93,3 +93,134 @@ div.thread-show .thread-info {
     text-decoration: none;
     color: #000;
   }
+
+  /*/GUSTAFS VERSION PRINT POSTS/*/
+  a.printed-post-frame {
+  width: 60vw;
+  display: inline-block;
+  padding: 3vh 2vw;
+  margin-left: 20vw;
+  position: relative;
+  min-height: 140px;
+  background-color: rgba(92,144,168,0.5);
+  }
+
+.printed-post-title {
+  font-size: 1.5em;
+  font-weight: 600;
+  margin: 0;
+  position: absolute;
+  top: 2vh;
+}
+
+.printed-post-content {
+  font-size: 0.8em;
+  margin: 0;
+  position: absolute;
+  top: 6.5vh;
+  width: 80%;
+  height: 25%;
+  overflow: hidden;
+}
+
+.printed-post-likes {
+  font-weight: 700;
+  font-size: 1.2em;
+  letter-spacing: 0.1em;
+  color: #ececec;
+  position: absolute;
+  bottom: 45%;
+  right: 1.4vw;
+  font-family: monospace;
+}
+
+.printed-post-creator {
+  font-size: 0.8em;
+  margin: 0;
+  position: absolute;
+  top: 11.5vh;
+  left: 6.5vh;
+  width: 80%;
+}
+
+.printed-post-date {
+  font-size: 0.8em;
+  margin: 0;
+  position: absolute;
+  top: 11.5vh;
+  left: 12vh;
+  width: 80%;
+}
+
+.printed-post-views {
+  font-size: 0.8em;
+  margin: 0;
+  position: absolute;
+  top: 11.5vh;
+  left: 4vh;
+  width: 80%;
+}
+
+/*/GUSTAFS VERSION SHOW POSTS/*/
+.original-post {
+  min-height: 20vh;
+  width: inherit;
+  background-color: rgba(92,144,168,0.4);
+}
+
+.original-post-frame {
+  width: inherit;
+  display: inline-block;
+  padding: 35px;
+  position: relative;
+  min-height: inherit;
+  background-color: rgba(92,144,168,0.5);
+}
+
+.original-post-title {
+  font-size: 1.5em;
+  font-weight: 600;
+  margin: 0;
+  position: absolute;
+  top: 2vh;
+}
+
+.original-post-content {
+  font-size: 1.0em;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  top: 25px;
+  width: 85%;
+}
+
+.original-post-creator {
+  display: inline-block;
+  margin-top: 40px;
+  font-size: 0.9em;
+  width: 10%;
+
+}
+
+.original-post-date {
+  display: inline-block;
+  font-size: 0.9em;
+  width: 15%;
+}
+
+.original-post-views {
+  display: inline-block;
+  font-size: 0.9em;
+  width: 20%;
+}
+
+.original-post-likes {
+  font-weight: 700;
+  font-size: 1.9em;
+  letter-spacing: 0.1em;
+  color: #ececec;
+  position: absolute;
+  bottom: 40%;
+  right: 45px;
+  font-family: monospace;
+}
