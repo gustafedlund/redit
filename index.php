@@ -19,7 +19,7 @@
 <!-- M A I N - C O N T E N T - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <div id="maincontent">
   <div class="maincontent">
-    
+
       <?php echo $printPosts; ?>
 
   </div>

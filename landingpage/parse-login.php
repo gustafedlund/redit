@@ -28,7 +28,7 @@ if (isset($_POST['login_submit'])) { //did the user access this page by clicking
         mysqli_stmt_bind_param($stmt, "s", $uid); //pass in parameter from users given when they tried to login
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
-        
+
         //did we get a result or not?
 
         if ($row = mysqli_fetch_assoc($result)) { //fetching data from result variable & puts it in an associative array
