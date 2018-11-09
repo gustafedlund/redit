@@ -49,6 +49,10 @@ include  '../init/config.php';
 
    ?>
 
+   <a href="login.php" id="createuser_link">
+     har du redan ett konto? logga in!
+   </a><br />
+
 <form method="post" action="./parse-signup.php">
 
   <label>användarnamn: </label><input class="signup_form_input" type="text" name="uid" /> <br />

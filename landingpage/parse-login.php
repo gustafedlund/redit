@@ -28,7 +28,9 @@ if (isset($_POST['login_submit'])) { //did the user access this page by clicking
         mysqli_stmt_bind_param($stmt, "s", $uid); //pass in parameter from users given when they tried to login
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
+        
         //did we get a result or not?
+
         if ($row = mysqli_fetch_assoc($result)) { //fetching data from result variable & puts it in an associative array
 
           //if there's a user matching - grab and hash PASSWORD
@@ -42,8 +44,6 @@ if (isset($_POST['login_submit'])) { //did the user access this page by clicking
           elseif ($pwd_check == true) {
 
             //logged in! start session and set global session variables
-
-            session_start();
 
             $_SESSION['user_id'] = $row['user_id'];
             $_SESSION['username'] = $row['username'];
