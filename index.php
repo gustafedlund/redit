@@ -18,7 +18,7 @@
 <?php include "./init/sidebar.php" ?>
 <!-- M A I N - C O N T E N T - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <div class="maincontent">
-    
+
       <?php echo $printPosts; ?>
 
   </div>
@@ -36,8 +36,8 @@
       <?php
       session_start();
         if ($_SESSION['admin'] == 1) {
-          echo "<button href="" id='admin_panel'>
-            admin stuff
+          echo "<button id='admin_panel'>
+            <a href='userpage/admin_page.php'>admin stuff</a>
           </button>";
         }
        ?>
