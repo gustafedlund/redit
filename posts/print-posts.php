@@ -10,6 +10,7 @@ if (mysqli_num_rows($res) > 0) {
   while ($rows = mysqli_fetch_assoc($res)) { // Fetch printable information from every row (post)
     $id = $rows['post_id'];
     $title = $rows['post_title'];
+    $category = $rows['post_category'];
     $creator = $rows['post_creator'];
     $content = $rows['post_content'];
     $date = $rows['post_date'];
@@ -34,6 +35,7 @@ if (mysqli_num_rows($res) > 0) {
       $printPosts .= "</div>";
 
       $printPosts .= "<div class='post-info'>";
+        $printPosts .= "<a href='xx.php' class='links'> $category </a> <span class='divider'>/</span>";
         $printPosts .= "<span class='no_of_comments'> $replies </span><span class='comment_symbol'></span> <span class='divider'>/</span>";
         $printPosts .= "<span class='no_of_views'> $views </span><span class='view_symbol'></span> <span class='divider'>/</span>";
         $printPosts .= "<a class='links' href='../userpage/userpage.php?username=$creator' class='author'>$creator</a> <span class='divider'>/</span>";
