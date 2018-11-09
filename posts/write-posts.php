@@ -116,12 +116,15 @@ if (isset($_POST['post_submit'])) {
 }*/
 
  ?>
+
+  <link rel="stylesheet" href="../styles/posts.css">
+
 <div id="write_post">
 
 <form method="post" action="write-posts.php" id="write_post_form">
   <label for="post_title_input">titel: </label><input type="text" name="post_title" id="post_title_input" /><br />
   <label for="post_text_input">inlägg: </label><textarea name="post_text" id="post_text_input" rows="10" cols="40" placeholder="Skriv inlägg..."></textarea> <br />
-  <label for="post_img">bild: </label><input type="file" name="post_img" id="post_img" /> <br />
+  <!--<label for="post_img">bild: </label><input type="file" name="post_img" id="post_img" /> <br />-->
 
   <label for="category_selector">kategori: </label>
     <select name="categories" form="write_post_form">
