@@ -15,14 +15,24 @@ if (mysqli_num_rows($res) > 0) {
     $date = $rows['post_date'];
     $views = $rows['post_views'];
     $likes = $rows['post_likes'];
+    $replies = $rows['post_replies'];
+
     //Pushing HTML into the variable down here
     $printPosts .= "<a href='posts/show-post.php?pid=$id' class = 'printed-post-frame'>";
-      $printPosts .= "<p class = 'printed-post-title'>$title</p>";
-      $printPosts .= "<p class = 'printed-post-content'>$content</p>";
-      $printPosts .= "<p class = 'printed-post-creator'>$creator</p>";
-      $printPosts .= "<p class = 'printed-post-date'>$date</p>";
-      $printPosts .= "<p class = 'printed-post-views'>$views</p>";
-      $printPosts .= "<p class = 'printed-post-likes'>$likes</p>";
+
+      $printPosts .= "<div class='post-right'>";
+        $printPosts .= "<span class='upvote'></span>";
+        $printPosts .=  "<span class='post_rating printed-post-likes'>$likes</span>";
+        $printPosts .= "<span class='downvote'></span>";
+      $printPosts .= "</div>";
+
+      $printPosts .= "<div class='post-info'>";
+        $printPosts .= "<span class='no_of_comments'> $replies </span><span class='comment_symbol'></span> <span class='divider'>/</span>";
+        $printPosts .= "<span class='no_of_views'> $views </span><span class='view_symbol'></span> <span class='divider'>/</span>";
+        $printPosts .= "<a href='../userpage/userpage.php?username=$creator' class='author'>$creator</a> <span class='divider'>/</span>";
+        $printPosts .= "<span class='date_posted'>$date</span>";
+      $printPosts .= "</div>";
+
     $printPosts .= "</a>";
   }
 } else {
@@ -31,3 +41,4 @@ if (mysqli_num_rows($res) > 0) {
 
 
 ?>
+</div>

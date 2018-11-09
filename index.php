@@ -18,9 +18,8 @@
 <?php include "./init/sidebar.php" ?>
 <!-- M A I N - C O N T E N T - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <div class="maincontent">
-    <div class="gustafsversion">
+    
       <?php echo $printPosts; ?>
-    </div>
 
   </div>
 
