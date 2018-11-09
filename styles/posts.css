@@ -1,22 +1,26 @@
-a.printed-post-frame {
+div.printed-post-frame {
 width: 60vw;
 display: inline-block;
 padding: 3vh 2vw;
-margin-left: 20vw;
 position: relative;
 min-height: 140px;
 color: #000;
-z-index: 500;
 }
-a.printed-post-frame:nth-child(even) {
+div.printed-post-frame:nth-child(even) {
 background-color: rgba(92,144,168,0.4);
 }
-a.printed-post-frame:nth-child(odd) {
+div.printed-post-frame:nth-child(odd) {
 background-color: rgba(92,144,168,0.5);
 }
 .post-left {
   float: left;
   width: 85%;
+  color: #000;
+}
+a.post-link {
+  text-decoration: none;
+  color: #000;
+  font-weight: 500;
 }
   h2.printed-post-title {
     font-size: 1.5em;
@@ -24,13 +28,14 @@ background-color: rgba(92,144,168,0.5);
     margin: 0;
     position: absolute;
     top: 2vh;
+    max-width: 85%;
   }
    p.printed-post-content {
     font-size: 0.8em;
     margin: 0;
     position: absolute;
     top: 6.5vh;
-    width: 80%;
+    max-width: 85%;
   }
 .post-right {
   float: right;
