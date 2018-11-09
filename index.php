@@ -33,6 +33,9 @@
        ?>
     </div>
 
+    <div id='newpost'>
+    </div>
+
   </div>
 
 </body>
