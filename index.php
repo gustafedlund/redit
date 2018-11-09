@@ -34,11 +34,8 @@
         senaste
       </button>
       <?php
-      session_start();
         if ($_SESSION['admin'] == 1) {
-          echo "<button id='admin_panel'>
-            <a href='userpage/admin_page.php'>admin stuff</a>
-          </button>";
+          echo "<a href='userpage/admin_page.php'><button id='admin_panel'>admin stuff</button></a>";
         }
        ?>
     </div>
