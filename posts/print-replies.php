@@ -26,3 +26,25 @@ if (mysqli_num_rows($res) > 0) {
     $printOp .= "</a>";
   }
 }
+
+$sql2 = "SELECT * FROM replies WHERE post_id='$pid' ORDER BY reply_date DESC ";
+$res2 = mysqli_query($conn, $sql2) or die(mysqli_error($conn));
+
+$printReplies = "";
+
+if (mysqli_num_rows($res2) > 0) {
+  while($rows2 = mysqli_fetch_assoc($res2)) {
+    $replyCreator = $rows2['reply_creator'];
+    $replyContent = $rows2['reply_content'];
+    $replyDate = $rows2['reply_date'];
+    $replyLikes = $rows2['reply_likes'];
+
+    $printReplies .= "<span class = 'reply-frame'> ";
+      $printReplies .= "<p class = 'reply-creator'>$replyCreator</p>";
+      $printReplies .= "<p class = 'reply-content'>$replyContent</p>";
+      $printReplies .= "<p class = 'reply-date'>$replyDate</p>";
+      $printReplies .= "<p class = 'reply-likes'>$replyLikes</p>";
+    $printReplies .= "</span>";
+
+  }
+}
