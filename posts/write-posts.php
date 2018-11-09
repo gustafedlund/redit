@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require "../init/config.php";
 
 if (isset($_POST['post_submit'])) {
