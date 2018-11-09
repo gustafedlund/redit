@@ -51,13 +51,13 @@ include  '../init/config.php';
 
 <form method="post" action="./parse-signup.php">
 
-  <label>användarnamn: </label><input class="signup_form_input" type="text" name="uid" /> <span class="errormsg"> <?php echo $username_err ?> </span> <br />
+  <label>användarnamn: </label><input class="signup_form_input" type="text" name="uid" /> <br />
 
-  <label>lösenord: </label><input class="signup_form_input" type="password" name="pwd" /> <span class="errormsg"> <?php echo $password_err ?> </span> <br />
+  <label>lösenord: </label><input class="signup_form_input" type="password" name="pwd" /> <br />
 
-  <label>bekräfta lösenord: </label><input class="signup_form_input" type="password" name="pwd_rpt" /> <span class="errormsg"> <?php echo $password_confirm_err ?> </span> <br />
+  <label>bekräfta lösenord: </label><input class="signup_form_input" type="password" name="pwd_rpt" /> <br />
 
-  <label>e-mail: </label><input class="signup_form_input" type="email" name="mail" /> <span class="errormsg"> <?php echo $email_err ?> </span> <br />
+  <label>e-mail: </label><input class="signup_form_input" type="email" name="mail" /> <br />
 
   <input id="signup_button" type="submit" name="signup_submit" value="Skapa användare!" />
 
