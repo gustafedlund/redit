@@ -13,7 +13,7 @@ if (isset($_POST['post_submit'])) {
   $post_creator = $_SESSION['username'];
   $post_date = date("Y/m/d");
 
-  if (empty($post_title) || empty($post_text) || empty($post_category)) {
+  if (empty($post_title) || empty($post_text)) {
     header("Location: ./write-posts.php?error=emptyfields");
     exit(); //if user makes a mistake, this stops code from running
   }

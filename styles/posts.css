@@ -160,6 +160,9 @@ div#write_post #submit_post {
   bottom: 10px;
   left: 45%;
 }
+div#write_post #submit_post:hover {
+    background-image: url(../img/submit_bl.png);
+}
 div#write_post #cancel_post {
   width: 40px;
   height: 40px;
@@ -171,4 +174,7 @@ div#write_post #cancel_post {
   position: absolute;
   top: 20px;
   right: 20px;
+}
+div#write_post #cancel_post:hover {
+    background-image: url(../img/close_bl.png);
 }
