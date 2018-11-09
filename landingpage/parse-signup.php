@@ -2,7 +2,7 @@
 
 if (isset($_POST['signup_submit'])) { //did the user access this page by clicking submit ?
 
-    require '../init/config.php';
+  require '../init/config.php';
 
     $new_username = $_POST['uid'];
     $new_password = $_POST['pwd'];
