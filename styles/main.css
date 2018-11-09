@@ -87,7 +87,7 @@ body {
   left: 20vw;
   width: 60vw;
   height: 100vh;
-  margin: 0;
+  margin-left: 20vw;
   overflow: scroll;
 }
 div#left-side {
