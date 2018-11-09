@@ -1,14 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8" />
-<link rel="stylesheet" type="text/css" href="../styles/start.css" />
-<link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800,900" rel="stylesheet">
-</head>
+<?php
 
-<body>
+  session_start();
 
-<div id="maincontent">
+  require "../init/header.php";
+
+ ?>
+
+<body id=login_page>
+
+<div id="maincontent_login">
 
 <img src="../img/logo_text_gr.png" alt="Redit logo" />
 

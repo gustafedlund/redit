@@ -84,7 +84,6 @@ if (isset($_POST['post_submit'])) {
     }
 
   }
-
   if (!empty($_POST['post_title'])  && !empty($_POST['post_text']) && empty($_POST['post_img'])) {
     $sql = "INSERT INTO posts (post_title, post_content, post_category, post_creator, post_date) VALUES ('$post_title', '$post_text', '$post_category', '$post_creator', '$post_date')";
 
@@ -118,8 +117,6 @@ if (isset($_POST['post_submit'])) {
 }*/
 
  ?>
-
-  <link rel="stylesheet" href="../styles/posts.css">
 
 <div id="write_post">
 

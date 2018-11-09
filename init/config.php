@@ -14,5 +14,3 @@ if(!$conn) {
 date_default_timezone_set("Europe/Stockholm");
 
 ?>
-
-<link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800" rel="stylesheet">

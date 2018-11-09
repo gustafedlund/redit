@@ -1,18 +1,13 @@
 <?php
 
-include  '../init/config.php';
+session_start();
+
+require  '../init/config.php';
+require "../init/header.php";
 
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8" />
-<link rel="stylesheet" type="text/css" href="../styles/start.css" />
-<link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800,900" rel="stylesheet">
-</head>
-
-<body>
+<body id="signup_page">
 
 <div id="maincontent_signup">
 

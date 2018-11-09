@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 if (isset($_POST['login_submit'])) { //did the user access this page by clicking submit ?
 
     require '../init/config.php';
