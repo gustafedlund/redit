@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require "../init/config.php";
 
 if (isset($_POST['post_submit'])) {
@@ -122,8 +124,11 @@ if (isset($_POST['post_submit'])) {
 <div id="write_post">
 
 <form method="post" action="write-posts.php" id="write_post_form">
+
+  <span id="cancel_post"></span>
+
   <label for="post_title_input">titel: </label><input type="text" name="post_title" id="post_title_input" /><br />
-  <label for="post_text_input">inlägg: </label><textarea name="post_text" id="post_text_input" rows="10" cols="40" placeholder="Skriv inlägg..."></textarea> <br />
+  <label for="post_text_input"></label><textarea name="post_text" id="post_text_input" rows="10" cols="40" placeholder="Skriv inlägg..."></textarea> <br />
   <!--<label for="post_img">bild: </label><input type="file" name="post_img" id="post_img" /> <br />-->
 
   <label for="category_selector">kategori: </label>
@@ -136,9 +141,9 @@ if (isset($_POST['post_submit'])) {
       <option value="nyheter">Nyheter</option>
       <option value="meme">Memes</option>
       <option value="dagens-bild">Dagens bild</option>
-    </select>
+    </select><br />
 
-  <input type="submit" name="post_submit" value="skicka in!" />
+  <input id="submit_post" type="submit" name="post_submit" value="" />
 </form>
 
 </div>

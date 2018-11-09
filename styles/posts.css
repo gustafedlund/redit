@@ -1,6 +1,7 @@
 * {
   font-family: 'Nunito', sans-serif;
 }
+
 div.printed-post-frame {
 width: 60vw;
 display: inline-block;
@@ -120,9 +121,13 @@ div#write_post {
   top: 20vh;
   background-color: rgba(92,144,168,0.5);
 }
+div#write_post form {
+  width: 50vw;
+  height: 60vh;
+  padding-top: 15%;
+}
 div#write_post label {
   font-size: 1.1em;
-  line-height: 3em;
   width: 30%;
   display: inline-block;
   text-align: right;
@@ -136,4 +141,34 @@ div#write_post input {
   border: none;
   background-color: #ececec;
 }
-div#write_post textarea {}
+div#write_post textarea {
+  width: 45%;
+  height: 10em;
+  border-radius: 5px;
+  margin: 10px;
+  border: none;
+  background-color: #ececec;
+}
+div#write_post #submit_post {
+  width: 60px;
+  height: 60px;
+  background-image: url(../img/submit.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0);
+  position: absolute;
+  bottom: 10px;
+  left: 45%;
+}
+div#write_post #cancel_post {
+  width: 40px;
+  height: 40px;
+  background-image: url(../img/close.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0);
+  display: inline-block;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
