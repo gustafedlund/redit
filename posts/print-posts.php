@@ -29,9 +29,9 @@ if (mysqli_num_rows($res) > 0) {
       $printPosts .= "</a>";
 
       $printPosts .= "<div class='post-right'>";
-        $printPosts .= "<span class='upvote'></span>";
-        $printPosts .=  "<span class='post_rating printed-post-likes'>$likes</span>";
-        $printPosts .= "<span class='downvote'></span>";
+          $printPosts .= "<span class='upvote'></span>";
+          $printPosts .=  "<span class='post_rating printed-post-likes'>$likes</span>";
+          $printPosts .= "<span class='downvote'></span>";
       $printPosts .= "</div>";
 
       $printPosts .= "<div class='post-info'>";
@@ -39,7 +39,11 @@ if (mysqli_num_rows($res) > 0) {
         $printPosts .= "<span class='no_of_comments'> $replies </span><span class='comment_symbol'></span> <span class='divider'>/</span>";
         $printPosts .= "<span class='no_of_views'> $views </span><span class='view_symbol'></span> <span class='divider'>/</span>";
         $printPosts .= "<a class='links' href='../userpage/userpage.php?username=$creator' class='author'>$creator</a> <span class='divider'>/</span>";
-        $printPosts .= "<span class='date_posted'>$date</span>";
+        $printPosts .= "<span class='date_posted'>$date</span><span class='divider'>/</span>";
+
+        if ($_SESSION['admin'] == 1) {
+            $printPosts .= "<a href=''>Delete post</a>";
+        }
       $printPosts .= "</div>";
 
     $printPosts .= "</div>";
