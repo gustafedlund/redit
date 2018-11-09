@@ -17,7 +17,12 @@
 .bold {
   font-weight: 700;
 }
-a:hover {
+a.links {
+  font-weight: 500;
+  text-decoration: none;
+  color: #000;
+}
+a.links:hover {
   font-weight: 700;
 }
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -47,6 +52,9 @@ body {
     display: block;
     font-size: 1em;
     line-height: 8vh;
+  }
+  #sidebar a.category:hover {
+    font-weight: 700;
   }
     #sidebar #char-indicator {
       position: fixed;
@@ -84,7 +92,7 @@ body {
 #maincontent {
   position: fixed;
   top: 0;
-  left: 20vw;
+  left: 0;
   width: 60vw;
   height: 100vh;
   margin-left: 20vw;

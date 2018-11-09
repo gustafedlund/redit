@@ -17,8 +17,8 @@
 <!-- S I D E B A R - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 <?php include "./init/sidebar.php" ?>
 <!-- M A I N - C O N T E N T - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-  <div class="maincontent">
-    
+  <div id="maincontent">
+
       <?php echo $printPosts; ?>
 
   </div>
@@ -34,8 +34,7 @@
         senaste
       </button>
     </div>
-    <div id='newpost'>
-    </div>
+
   </div>
 
 </body>
