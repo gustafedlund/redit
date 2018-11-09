@@ -121,6 +121,9 @@ div#left-side {
       font-weight: 700;
       padding: 0.5vh 1.93vw 0.25vh 1.95vw;
     }
+    button#admin_panel {
+      float: right;
+    }
   #newpost {
     width: 6vw;
     height: 6vw;

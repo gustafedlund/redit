@@ -34,6 +34,14 @@
       <button id='sort_newest'>
         senaste
       </button>
+      <?php
+      session_start();
+        if ($_SESSION['admin'] == 1) {
+          echo "<button href="" id='admin_panel'>
+            admin stuff
+          </button>";
+        }
+       ?>
     </div>
     <div id='newpost'>
     </div>
