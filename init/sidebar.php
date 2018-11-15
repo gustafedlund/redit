@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="./styles/main.css">
 
 <div id="sidebar">
-  <a href="index.php"><img src="./img/logo_text_gr.png" /></a>
+  <a href="index.php"><img src="../img/logo_text_gr.png" /></a>
   <a href="index.html" class="category regular">bygdababbel</a>
   <a href="index.html" class="category regular">skola</a>
   <a href="index.html" class="category regular">politik</a>
@@ -15,7 +15,10 @@
       <div id='char-info'>
         <span id='username' class='bold'> <?php echo $_SESSION['username']; ?> </span> <br />
         <span id='redighet' class='light'>redighet: <span id='redighet' class='semi-bold'>36%</span></span><br />
-        <a href='../userpage/userpage.php' class="links">min sida</a><br />
+
+<form method="post" action="../userpage/userpage.php?user=<?php echo $_SESSION['username']; ?>" name="userpage_access">
+  <input type="submit" value="min sida" />
+</form>
 
         <a href="/landingpage/logout.php" class='links'>logga ut</a>
 

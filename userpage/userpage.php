@@ -11,15 +11,29 @@ require '../init/sidebar.php';
 
    <span id='userpage_top'>
 
-     <span id='userpage_avatar'></span>
+     
+
+     <span id="userpage_avatar"></span>
+
+     <form method="post" action="parse-avatar.php" name="change_avatar_form" enctype="multipart/form-data" id="change_avatar_form">
+
+       <label for="avatar_upload" id="avatar_upload_label" onclick="showForm();">ändra profilbild...</label> <input type="file" name="avatar_upload" id="avatar_upload" />
+
+       <span id="file_uploaded"><?php echo "thisisthefile.png"; ?></span><br />
+
+       <input type="submit" name="submit_avatar" value="" id="change_avatar_submit" />
+
+     </form>
+
 
      <span id='userpage_info'>
 
-       <span id='userpage_username'> <?php echo "currentuser"; ?> </span>
+       <span id='userpage_username'> <?php echo $_SESSION['username']; ?> </span>
        <span id='userpage_membersince'> <?php echo "medlem sedan"; ?> </span>
        <span id='userpage_redighet'> <?php echo "redighet"; ?> </span>
 
      </span>
+
 
      <span id='userpage_tagline'><?php echo "här kan du introducera dig själv eller bara skriva ditt favoritcitat eller nåt riktigt jävla töntigt.... no judgement!!!"; ?></span>
 
@@ -40,3 +54,11 @@ require '../init/sidebar.php';
    <div id='newpost'>
    </div>
  </a>
+
+ <script>
+
+function showForm() {
+  document.getElementById('change_avatar_form').style.display = 'block';
+}
+
+ </script>
