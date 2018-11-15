@@ -1,5 +1,7 @@
 <?php
 
+require "../init/config.php";
+
 session_start();
 
 if (isset($_POST['post_submit'])) {
@@ -11,11 +13,11 @@ if (isset($_POST['post_submit'])) {
   $post_creator = $_SESSION['username'];
   $post_date = date("Y/m/d");
 
-  if (empty($post_title) || empty($post_text)) {
+  if (empty($post_title) || empty($post_text) || $post_category == 'no_cat') {
     header("Location: ./write-posts.php?error=emptyfields");
     exit(); //if user makes a mistake, this stops code from running
   }
-  elseif (!preg_match("/^[A-Za-z åäö ÅÄÖ 0-9]*$/", $post_title) && !preg_match("/^[A-Za-z åäö ÅÄÖ 0-9]*$/", $post_text)) {
+  elseif (!preg_match("/^[A-Za-zåäöÅÄÖ 0-9]*$/", $post_title) && !preg_match("/^[A-Za-z åäö ÅÄÖ 0-9]*$/", $post_text)) {
     header("Location: ./write-posts.php?error=forbiddenchars");
     exit();
   }
@@ -89,7 +91,7 @@ if (isset($_POST['post_submit'])) {
       header("Location: ./write-posts.php?success=postcreated");
       exit();
     } else {
-      header("Location: ./write-posts.php?error=notposted&err=" . mysqli_error($conn));
+      header("Location: ./write-posts.php?error=notposted");
       exit();
     }
 
@@ -101,7 +103,7 @@ if (isset($_POST['post_submit'])) {
       header("Location: ./write-posts.php?success=postcreated");
       exit();
     } else {
-      header("Location: ./write-posts.php?error=notposted&err=" . mysqli_error($conn));
+      header("Location: ./write-posts.php?error=notposted");
       exit();
     }
 
@@ -114,9 +116,42 @@ if (isset($_POST['post_submit'])) {
   exit();
 }*/
 
+include "../init/header.php";
+include "../init/sidebar.php";
+
  ?>
 
 <div id="write_post">
+
+<div id="msg_container">
+
+  <?php
+
+  if ($_GET['error'] == 'emptyfields') {
+    echo "Du måste fylla i alla fält!";
+  }
+  if ($_GET['error'] == 'forbiddenchars') {
+    echo "Ditt inlägg innehåller förbjudna tecken...";
+  }
+  if ($_GET['error'] == 'toolarge') {
+    echo "Din bild är för stor!";
+  }
+  if ($_GET['error'] == 'wrongformat') {
+    echo "Din bild får endast vara i format JPG, PNG eller GIF!";
+  }
+  if ($_GET['error'] == 'notuploaded') {
+    echo "Din bild laddades inte upp...";
+  }
+  if ($_GET['error'] == 'notposted') {
+    echo "Något gick fel, ditt inlägg har inte skickats in...";
+  }
+  if ($_GET['success'] == 'postcreated') {
+    echo "<p class='success'>Ditt inlägg har skickats in!</p> <a href='../index.php'>Tillbaka till startsidan</a>";
+  }
+
+  ?>
+
+</div>
 
 <form method="post" action="write-posts.php" id="write_post_form">
 
@@ -126,6 +161,7 @@ if (isset($_POST['post_submit'])) {
 
   <label for="category_selector">kategori: </label>
     <select name="categories" form="write_post_form">
+      <option value="no_cat">Välj en kategori...</option>
       <option value="bygdababbel">Bygdababbel</option>
       <option value="skola">Skola</option>
       <option value="politik">Politik</option>
@@ -136,7 +172,16 @@ if (isset($_POST['post_submit'])) {
       <option value="dagens-bild">Dagens bild</option>
     </select><br />
 
-  <input id="submit_post" type="submit" name="post_submit" value="" />
+  <span id='cancel-submit-container'>
+    <span id="cancel_container">
+      <a id="cancel_post" href="../index.php"></a>
+      <span id='cancel_caption'>kasta inlägg</span>
+    </span>
+    <span id="submit_container">
+      <input id="submit_post" type="submit" name="post_submit" value="" />
+      <span id='submit_caption'>skicka in inlägg</span>
+    </span>
+  </span>
 </form>
 
 </div>

@@ -11,13 +11,6 @@
 <!-- M A I N - C O N T E N T - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <div id="maincontent">
 
-    <div id="write_post_container">
-      <span id="cancel_post" onclick="hideContainer();"></span>
-      <?php
-      include "./posts/write-posts.php";
-      ?>
-    </div>
-
       <?php echo $printPosts; ?>
 
   </div>
@@ -39,8 +32,10 @@
        ?>
     </div>
 
-    <div id='newpost' onclick="showContainer();">
-    </div>
+    <a href="./posts/write-posts.php">
+      <div id='newpost'>
+      </div>
+    </a>
 
   </div>
 

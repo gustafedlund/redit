@@ -113,21 +113,35 @@ a.post-link {
 
 /*/ write posts /*/
 
-div#write_post_container {
-  display: none;
-}
+
 div#write_post {
-  width: 50vw;
-  height: 60vh;
+  width: 60vw;
+  height: 100vh;
   position: fixed;
-  left: 25vw;
-  top: 20vh;
+  left: 20vw;
+  top: 0;
   background-color: rgba(92,144,168,0.5);
 }
+div#write_post #msg_container {
+  margin: 10% 25% 0 25%;
+  color: red;
+  text-align: center;
+}
+div#write_post #msg_container .success {
+  color: #ececec;
+  display: inline;
+  font-size: 18px;
+}
+div#write_post #msg_container a {
+  color: #ececec;
+  display: inline;
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
 div#write_post form {
-  width: 50vw;
+  width: 60vw;
   height: 60vh;
-  padding-top: 15%;
 }
 div#write_post label {
   font-size: 1.1em;
@@ -135,9 +149,10 @@ div#write_post label {
   display: inline-block;
   text-align: right;
   font-weight: 700;
+  margin-left: -5vw;
 }
 div#write_post input {
-  width: 45%;
+  width: 50%;
   height: 3em;
   border-radius: 5px;
   margin: 10px;
@@ -145,38 +160,70 @@ div#write_post input {
   background-color: #ececec;
 }
 div#write_post textarea {
-  width: 45%;
-  height: 10em;
+  width: 50%;
+  height: 15em;
   border-radius: 5px;
   margin: 10px;
   border: none;
   background-color: #ececec;
 }
+div#write_post #cancel-submit-container  {
+  position: absolute;
+  bottom: 10%;
+  left: 40%;
+  font-size: 20px;
+  color: #ececec;
+  font-weight: 700;
+}
+#cancel_container,
+#submit_container {
+  position: relative;
+  width: 30%;
+}
+#cancel_container #cancel_caption {
+  position: absolute;
+  left: -110px;
+  bottom: 20px;
+  transition: opacity 0.5s ease-in;
+}
+#cancel_container button {
+  right: 0;
+  bottom: 0;
+}
+#submit_container #submit_caption {
+  position: absolute;
+  right: -125px;
+  bottom: 20px;
+  transition: opacity 0.5s ease-in;
+}
+#cancel_caption, #submit_caption {
+  opacity: 0;
+}
+#cancel_post:hover + #cancel_caption,
+#submit_post:hover + #submit_caption {
+  opacity: 1;
+}
 div#write_post #submit_post {
   width: 60px;
-  height: 60px;
+  height: 50px;
   background-image: url(../img/submit.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-color: rgba(0, 0, 0, 0);
-  position: absolute;
-  bottom: 10px;
-  left: 45%;
 }
 div#write_post #submit_post:hover {
     background-image: url(../img/submit_bl.png);
 }
 div#write_post #cancel_post {
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 50px;
   background-image: url(../img/close.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-color: rgba(0, 0, 0, 0);
+  background-position: bottom;
   display: inline-block;
-  position: absolute;
-  top: 20px;
-  right: 20px;
+  border: none;
 }
 div#write_post #cancel_post:hover {
     background-image: url(../img/close_bl.png);
