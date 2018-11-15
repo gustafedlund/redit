@@ -15,7 +15,7 @@
       <div id='char-info'>
         <span id='username' class='bold'> <?php echo $_SESSION['username']; ?> </span> <br />
         <span id='redighet' class='light'>redighet: <span id='redighet' class='semi-bold'>36%</span></span><br />
-        <a href='mypage.php' class="links">min sida</a><br />
+        <a href='../userpage/userpage.php' class="links">min sida</a><br />
 
         <a href="/landingpage/logout.php" class='links'>logga ut</a>
 

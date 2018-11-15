@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="../styles/posts.css" type="text/css">
   <link rel="stylesheet" href="../styles/main.css" type="text/css">
   <link rel="stylesheet" href="../styles/start.css" type="text/css">
+  <link rel="stylesheet" href="../styles/userpage.css" type="text/css">
 
   <script type="text/javascript" src="../likeScript.js"></script>
 
