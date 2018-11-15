@@ -113,6 +113,9 @@ a.post-link {
 
 /*/ write posts /*/
 
+div#write_post_container {
+  display: none;
+}
 div#write_post {
   width: 50vw;
   height: 60vh;

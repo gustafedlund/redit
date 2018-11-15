@@ -2,8 +2,6 @@
 
 session_start();
 
-require "../init/config.php";
-
 if (isset($_POST['post_submit'])) {
 
   $post_title = $_POST['post_title'];
@@ -121,8 +119,6 @@ if (isset($_POST['post_submit'])) {
 <div id="write_post">
 
 <form method="post" action="write-posts.php" id="write_post_form">
-
-  <span id="cancel_post"></span>
 
   <label for="post_title_input">titel: </label><input type="text" name="post_title" id="post_title_input" /><br />
   <label for="post_text_input"></label><textarea name="post_text" id="post_text_input" rows="10" cols="40" placeholder="Skriv inlägg..."></textarea> <br />
