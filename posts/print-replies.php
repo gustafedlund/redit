@@ -47,4 +47,6 @@ if (mysqli_num_rows($res2) > 0) {
     $printReplies .= "</span>";
 
   }
+} else {
+  echo "Ingen har kommenterat ännu, bli den första!";
 }

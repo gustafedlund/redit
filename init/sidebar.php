@@ -13,7 +13,7 @@
     <div id='char-indicator'>
       <span id='avatar'></span>
       <div id='char-info'>
-        <span id='username' class='bold'> <?php echo $_SESSION['username']; ?> </span> <br />
+        <span id='username' class='bold'> <?php session_start(); echo $_SESSION['username']; ?> </span> <br />
         <span id='redighet' class='light'>redighet: <span id='redighet' class='semi-bold'>36%</span></span><br />
 
 <form method="post" action="../userpage/userpage.php?user=<?php echo $_SESSION['username']; ?>" name="userpage_access">
