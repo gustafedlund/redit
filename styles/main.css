@@ -73,13 +73,11 @@ body {
         height: 10vh;
         border-radius: 50%;
         float: left;
-        background-image: url(../img/sample-avatar.png);
         background-repeat: no-repeat;
-        background-size: contain;
+        background-size: cover;
       }
       #sidebar #char-indicator #char-info {
         float: left;
-        width: 20vh;
         padding-left: 0.75vw;
         margin-top: -0.2vh;
         font-size: 1em;

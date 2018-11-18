@@ -11,7 +11,24 @@
   <a href="index.html" class="category regular">meme</a>
   <a href="index.html" class="category regular">dagens bild</a>
     <div id='char-indicator'>
-      <span id='avatar'></span>
+
+
+<?php
+
+$user = $_SESSION['username'];
+$sql = "SELECT avatar FROM users WHERE username='$user'";
+$result = mysqli_query($conn, $sql);
+if ($result) {
+  $data = $result->fetch_assoc();
+  if ($data['avatar'] !== NULL) {
+    echo "<span id='avatar' style='background-image:url(../uploads/upload_avatar/" . $data['avatar'] . ");'></span>";
+  } else {
+    echo "<span id='avatar' style='background-image:url(../img/sample-avatar.png);'></span>";
+  }
+}
+
+ ?>
+
       <div id='char-info'>
         <span id='username' class='bold'> <?php echo $_SESSION['username']; ?> </span> <br />
         <span id='redighet' class='light'>redighet: <span id='redighet' class='semi-bold'>36%</span></span><br />

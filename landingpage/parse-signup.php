@@ -8,6 +8,7 @@ if (isset($_POST['signup_submit'])) { //did the user access this page by clickin
     $new_password = $_POST['pwd'];
     $confirm_password = $_POST['pwd_rpt'];
     $new_email = $_POST['mail'];
+    $member_since = date("Y/m/d");
 
     if (empty($new_username) || empty($new_password) || empty($confirm_password) || empty($new_email)) {
       header("Location: ./signup.php?error=emptyfields&uid=" . $new_username . "&mail=" . $new_email);
@@ -73,7 +74,7 @@ if (isset($_POST['signup_submit'])) { //did the user access this page by clickin
 
         else {
 
-          $sql = "INSERT INTO users (username, password, email) VALUES (?, ?, ?)"; //? as placeholder again, for safety
+          $sql = "INSERT INTO users (username, password, email, member_since) VALUES (?, ?, ?, '$member_since')"; //? as placeholder again, for safety
 
           $stmt = mysqli_stmt_init($conn);
 

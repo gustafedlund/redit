@@ -11,9 +11,21 @@ require '../init/sidebar.php';
 
    <span id='userpage_top'>
 
-     
+     <?php
 
-     <span id="userpage_avatar"></span>
+     $user = $_SESSION['username'];
+     $sql = "SELECT avatar FROM users WHERE username='$user'";
+     $result = mysqli_query($conn, $sql);
+     if ($result) {
+       $data = $result->fetch_assoc();
+       if ($data['avatar'] !== NULL) {
+         echo "<span id='userpage_avatar' style='background-image:url(../uploads/upload_avatar/" . $data['avatar'] . ");'></span>";
+       } else {
+         echo "<span id='userpage_avatar' style='background-image:url(../img/sample-avatar.png);'></span>";
+       }
+     }
+
+      ?>
 
      <form method="post" action="parse-avatar.php" name="change_avatar_form" enctype="multipart/form-data" id="change_avatar_form">
 
@@ -28,9 +40,22 @@ require '../init/sidebar.php';
 
      <span id='userpage_info'>
 
-       <span id='userpage_username'> <?php echo $_SESSION['username']; ?> </span>
-       <span id='userpage_membersince'> <?php echo "medlem sedan"; ?> </span>
-       <span id='userpage_redighet'> <?php echo "redighet"; ?> </span>
+<?php
+
+$user = $_SESSION['username'];
+
+$sql = "SELECT * FROM users WHERE username='$user'";
+$result = mysqli_query($conn, $sql);
+
+if ($result) {
+  $data = $result->fetch_assoc();
+
+  echo "<span id='userpage_username'>" . $data['username'] . "</span>";
+  echo "<span id='userpage_membersince'>" . $data['member_since'] . "</span>";
+  echo "<span id='userpage_redighet'>" . $data['user_id'] . "</span>";
+}
+
+ ?>
 
      </span>
 

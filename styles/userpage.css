@@ -20,9 +20,8 @@
   width: 15vw;
   height: 15vw;
   display: inline-block;
-  background-image: url(../img/sample-avatar.png);
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   position: absolute;
   left: 2%;
   top: 4%;
