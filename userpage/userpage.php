@@ -31,7 +31,7 @@ require '../init/sidebar.php';
 
        <label for="avatar_upload" id="avatar_upload_label" onclick="showForm();">ändra profilbild...</label> <input type="file" name="avatar_upload" id="avatar_upload" />
 
-       <span id="file_uploaded"><?php echo "thisisthefile.png"; ?></span><br />
+       <span id="file_uploaded"><?php echo "HÄR SKA DU SKRIVA ERROR MEDDELANDEN"; ?></span><br />
 
        <input type="submit" name="submit_avatar" value="" id="change_avatar_submit" />
 
@@ -60,7 +60,36 @@ if ($result) {
      </span>
 
 
-     <span id='userpage_tagline'><?php echo "här kan du introducera dig själv eller bara skriva ditt favoritcitat eller nåt riktigt jävla töntigt.... no judgement!!!"; ?></span>
+     <span id='userpage_tagline'>
+
+       <span id='tagline_container'>
+
+         <?php
+
+         $user = $_SESSION['username'];
+         $sql = "SELECT bio FROM users WHERE username='$user'";
+         $result = mysqli_query($conn, $sql);
+         if ($result) {
+           $data = $result->fetch_assoc();
+           if ($data['bio'] !== NULL) {
+             echo $data['bio'];
+           } else {
+             echo "skriv något om dig själv";
+           }
+         }
+
+          ?>
+
+       </span>
+
+       <form action="x" method="post">
+         <textarea name="tagline_input" placeholder="x"></textarea>
+         <input type="submit" name="submit"/>
+       </form>
+
+
+
+     </span>
 
    </span>
 
