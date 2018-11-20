@@ -31,7 +31,7 @@
        ?>
     </div>
 
-    <a href="./posts/write-posts.php">
+    <a href="../posts/write-posts.php">
       <div id='newpost'>
       </div>
     </a>

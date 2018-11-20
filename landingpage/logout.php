@@ -13,5 +13,5 @@ header('Location: login.php?logout=success');
 ?>
 
 <body>
-  
+
 </body>
