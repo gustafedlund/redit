@@ -14,7 +14,7 @@
 
 
 <?php
-
+include "config.php";
 $user = $_SESSION['username'];
 $sql = "SELECT avatar FROM users WHERE username='$user'";
 $result = mysqli_query($conn, $sql);
