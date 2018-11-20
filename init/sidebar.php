@@ -37,7 +37,7 @@ if ($result) {
   <input type="submit" value="min sida" />
 </form>
 
-        <a href="/landingpage/logout.php" class='links'>logga ut</a>
+        <a href="./landingpage/logout.php" class='links'>logga ut</a>
 
       </div>
   </div>
