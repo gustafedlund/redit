@@ -1,5 +1,6 @@
 <?php
-require "./init/config.php";
+session_start();
+require "../init/config.php";
 
 $sql = "SELECT * FROM posts ORDER BY post_date DESC";
 $res = mysqli_query($conn, $sql) or die(mysqli_error($conn));

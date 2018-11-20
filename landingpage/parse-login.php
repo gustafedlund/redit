@@ -52,7 +52,7 @@ if (isset($_POST['login_submit'])) { //did the user access this page by clicking
             $_SESSION['admin'] = $row['admin'];
 
 
-            header("Location: ../index.php?login=success");
+            header("Location: ../home/index.php?login=success");
             exit();
 
           }
