@@ -38,7 +38,7 @@ if (mysqli_num_rows($res) > 0) {
           $printPosts .= "<span class='upvote'></span>";
           $printPosts .=  "<span class='post_rating printed-post-likes'>$likes</span>";
           $printPosts .= "<span class='downvote'></span>";
-          $printPosts .= "<form action='posts/like-parse.php' name='likeform' action='POST'>";
+          $printPosts .= "<form action='../posts/like-parse.php' name='likeform' action='POST'>";
           $printPosts .= "<input type = 'submit' value=$id name ='like'/>";
           $printPosts .= "<input type = 'submit' value=$id name ='dislike'/></form>";
       $printPosts .= "</div>";

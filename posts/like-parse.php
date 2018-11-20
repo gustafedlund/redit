@@ -18,11 +18,11 @@ if (mysqli_num_rows($resCheck) > 0) { //the option to overwrite current vote if 
   if (isset($_GET['like'])) {
     $sql2 = "UPDATE likes SET like_dislike = '1' WHERE username='$uid' AND post_id='$pid' ";
     $res2 = mysqli_query($conn, $sql2);
-    header("Location: ../index.php?post-like=success");
+    header("Location: ../home/index.php?post-like=success");
   } elseif (isset($_GET['dislike'])) {
     $sql2 = "UPDATE likes SET like_dislike = '-1' WHERE username='$uid' AND post_id='$pid' ";
     $res2 = mysqli_query($conn, $sql2);
-    header("Location: ../index.php?post-dislike=success");
+    header("Location: ../home/index.php?post-dislike=success");
   }
 
 } else { //if the user hasn't liked/disliked, then push the like to the likes table
@@ -30,17 +30,17 @@ if (mysqli_num_rows($resCheck) > 0) { //the option to overwrite current vote if 
     $sql = "INSERT INTO likes (post_id, username, like_dislike) VALUES ('{$pid}', '{$uid}', '1')";
     $res = mysqli_query($conn, $sql);
     if ($res) {
-      header("Location: ../index.php?post-like=success");
+      header("Location: ../home/index.php?post-like=success");
     } else {
-      header("Location: ../index.php?post-like=failure");
+      header("Location: ../home/index.php?post-like=failure");
     }
   } elseif (isset($_GET['dislike'])) {
     $sql = "INSERT INTO likes (post_id, username, like_dislike) VALUES ('{$pid}', '{$uid}', '-1')";
     $res = mysqli_query($conn, $sql);
     if ($res) {
-      header("Location: ../index.php?post-dislike=success");
+      header("Location: ../home/index.php?post-dislike=success");
     } else {
-      header("Location: ../index.php?post-dislike=failure");
+      header("Location: ../home/index.php?post-dislike=failure");
     }
   }
 }

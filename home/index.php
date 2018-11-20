@@ -26,7 +26,7 @@
       </button>
       <?php
         if ($_SESSION['admin'] == 1) {
-          echo "<a href='userpage/admin_page.php'><button id='admin_panel'>admin stuff</button></a>";
+          echo "<a href='../userpage/admin_page.php'><button id='admin_panel'>admin stuff</button></a>";
         }
        ?>
     </div>
