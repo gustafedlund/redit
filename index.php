@@ -10,7 +10,6 @@
 <?php include "./init/sidebar.php" ?>
 <!-- M A I N - C O N T E N T - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
   <div id="maincontent">
-  <div class="maincontent">
 
       <?php echo $printPosts; ?>
 
@@ -33,10 +32,27 @@
        ?>
     </div>
 
-    <div id='newpost'>
-    </div>
+    <a href="./posts/write-posts.php">
+      <div id='newpost'>
+      </div>
+    </a>
 
   </div>
 
 </body>
+
+<script>
+var newPost = document.getElementById('newpost');
+var writeContainer = document.getElementById('write_post_container');
+
+function showContainer() {
+  writeContainer.style.display = 'block';
+}
+
+function hideContainer() {
+  writeContainer.style.display = 'none';
+}
+
+</script>
+
 </html>
