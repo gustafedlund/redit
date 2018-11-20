@@ -119,14 +119,40 @@
   position: absolute;
   bottom: 0;
   right: 5%;
-
 }
+.tagline_symbols {
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  background-color: rgba(0,0,0,0);
+  border: none;
+}
+  #tagline_write_caption, #tagline_submit_caption, #tagline_cancel_caption {
+      position: absolute;
+      right: 60px;
+      bottom: 50px;
+      transition: opacity 0.5s ease-in;
+      opacity: 0;
+      color: #000;
+  }
+#tagline_write {
+  background-image: url(../img/pen.png);
+  bottom: 15%;
+  right: 5%;
+}
+  #tagline_write:hover + #tagline_write_caption {
+    opacity: 1;
+  }
+
 #tagline_container, #change_tagline textarea { /* styles for the stuff in the container */
   font-size: 20px;
   font-weight: 700;
-}
-#change_tagline {
-  
+  width: 100%;
+  background: none;
+  border: none;
 }
 #tagline_container { /* styling for showing user's existing tagline */
   display: inline-block;

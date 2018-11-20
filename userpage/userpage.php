@@ -31,7 +31,7 @@ require '../init/sidebar.php';
 
        <label for="avatar_upload" id="avatar_upload_label" onclick="showForm();">ändra profilbild...</label> <input type="file" name="avatar_upload" id="avatar_upload" />
 
-       <span id="file_uploaded"><?php echo "HÄR SKA DU SKRIVA ERROR MEDDELANDEN"; ?></span><br />
+       <span id="file_uploaded"><?php echo "ERROR MEDDELANDEN"; ?></span><br />
 
        <input type="submit" name="submit_avatar" value="" id="change_avatar_submit" />
 
@@ -82,16 +82,17 @@ if ($result) {
 
        </span>
 
-       <form action="x" method="post" id="change_tagline">
+       <form action="parse_user_bio.php" method="post" id="change_tagline">
          <textarea name="tagline_input" placeholder="x"></textarea>
-         <input type="submit" name="submit"/>
+         <input type="button" id="tagline_cancel" />
+          <span id="tagline_cancel_caption">avbryt ändringar</span>
+         <input type="submit" name="submit" id="tagline_submit"/>
+          <span id="tagline_submit_caption">spara beskrivning</span>
        </form>
 
 
-       <span id="tagline_write"></span>
-       <span id="tagline_submit"></span>
-       <span id="tagline_cancel"></span>
-
+       <button class="tagline_symbols" id="tagline_write" onclick="showWriteForm();"></button>
+        <span id="tagline_write_caption">ändra beskrivning</span>
      </span>
 
    </span>
@@ -116,6 +117,9 @@ if ($result) {
 
 function showForm() {
   document.getElementById('change_avatar_form').style.display = 'block';
+}
+function showWriteForm() {
+  document.getElementById('change_tagline').style.display = 'block';
 }
 
  </script>
