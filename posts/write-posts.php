@@ -174,7 +174,7 @@ if (isset($_POST['post_submit'])) {
 
   <span id='cancel-submit-container'>
     <span id="cancel_container">
-      <a id="cancel_post" href="../index.php"></a>
+      <a id="cancel_post" href="../home/index.php"></a>
       <span id='cancel_caption'>kasta inlägg</span>
     </span>
     <span id="submit_container">
