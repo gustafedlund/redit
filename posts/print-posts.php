@@ -16,11 +16,13 @@ if (mysqli_num_rows($res) > 0) {
     $date = $rows['post_date'];
     $views = $rows['post_views'];
     $replies = $rows['post_replies'];
-    //Section for calculating likes on each post
+    //Section for calculating likes on each post and inserting it into post_likes
     $sqlLikes = "SELECT SUM(like_dislike) AS likes FROM likes ";
-    $sqlLikes = mysqli_query($conn, $sqlLikes);
-    $rowLikes = mysqli_fetch_assoc($sqlLikes);
-    $likes = $rowLikes['likes'];
+    $resLikes = mysqli_query($conn, $sqlLikes);
+    $rowLikes = mysqli_fetch_assoc($resLikes);
+    $totLikes = $rowLikes['likes'];
+    $sqlLikes2 = mysqli_query($conn, "UPDATE posts SET post_likes='$totLikes' WHERE post_id='$id' ");
+    $likes = $totLikes;
     //Pushing HTML into the variable down here
     $printPosts .= "<div class = 'printed-post-frame'>";
 
