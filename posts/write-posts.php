@@ -126,29 +126,29 @@ include "../init/sidebar.php";
 <div id="msg_container">
 
   <?php
-
+if (isset($_POST['post_submit'])) {
   if ($_GET['error'] == 'emptyfields') {
     echo "Du måste fylla i alla fält!";
   }
-  if ($_GET['error'] == 'forbiddenchars') {
+  elseif ($_GET['error'] == 'forbiddenchars') {
     echo "Ditt inlägg innehåller förbjudna tecken...";
   }
-  if ($_GET['error'] == 'toolarge') {
+  elseif ($_GET['error'] == 'toolarge') {
     echo "Din bild är för stor!";
   }
-  if ($_GET['error'] == 'wrongformat') {
+  elseif ($_GET['error'] == 'wrongformat') {
     echo "Din bild får endast vara i format JPG, PNG eller GIF!";
   }
-  if ($_GET['error'] == 'notuploaded') {
+  elseif ($_GET['error'] == 'notuploaded') {
     echo "Din bild laddades inte upp...";
   }
-  if ($_GET['error'] == 'notposted') {
+  elseif ($_GET['error'] == 'notposted') {
     echo "Något gick fel, ditt inlägg har inte skickats in...";
   }
-  if ($_GET['success'] == 'postcreated') {
+  elseif ($_GET['success'] == 'postcreated') {
     echo "<p class='success'>Ditt inlägg har skickats in!</p> <a href='../index.php'>Tillbaka till startsidan</a>";
   }
-
+}
   ?>
 
 </div>
@@ -174,7 +174,7 @@ include "../init/sidebar.php";
 
   <span id='cancel-submit-container'>
     <span id="cancel_container">
-      <a id="cancel_post" href="../index.php"></a>
+      <a id="cancel_post" href="../home/index.php"></a>
       <span id='cancel_caption'>kasta inlägg</span>
     </span>
     <span id="submit_container">
