@@ -17,7 +17,7 @@ if (mysqli_num_rows($res) > 0) {
     $views = $rows['post_views'];
     $replies = $rows['post_replies'];
     //Section for calculating likes on each post and inserting it into post_likes
-    $sqlLikes = "SELECT SUM(like_dislike) AS likes FROM likes ";
+    $sqlLikes = "SELECT SUM(like_dislike) AS likes FROM likes WHERE post_id='$id' ";
     $resLikes = mysqli_query($conn, $sqlLikes);
     $rowLikes = mysqli_fetch_assoc($resLikes);
     $totLikes = $rowLikes['likes'];
