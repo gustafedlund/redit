@@ -1,7 +1,9 @@
 <?php
 
+session_start();
 require "../init/config.php";
 
+  $user = $_SESSION['username'];
   $user_bio = $_POST['tagline_input'];
 
   if (empty($user_bio)) {
@@ -14,7 +16,7 @@ require "../init/config.php";
 
   if(!empty($_POST['tagline_input'])) {
 
-    $user = $_SESSION['username'];
+
     $sql = "UPDATE users SET bio='$user_bio' WHERE username='$user'";
     $result = mysqli_query($conn, $sql);
 
@@ -23,7 +25,6 @@ require "../init/config.php";
       exit();
     } else {
       header("Location: userpage.php?error=notchanged");
-
     }
     exit();
   }

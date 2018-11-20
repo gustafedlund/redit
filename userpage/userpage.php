@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 require "../init/config.php";
@@ -40,22 +41,22 @@ require '../init/sidebar.php';
 
      <span id='userpage_info'>
 
-<?php
+  <?php
 
-$user = $_SESSION['username'];
+    $user = $_SESSION['username'];
 
-$sql = "SELECT * FROM users WHERE username='$user'";
-$result = mysqli_query($conn, $sql);
+    $sql = "SELECT * FROM users WHERE username='$user'";
+    $result = mysqli_query($conn, $sql);
 
-if ($result) {
-  $data = $result->fetch_assoc();
+    if ($result) {
+      $data = $result->fetch_assoc();
 
-  echo "<span id='userpage_username'>" . $data['username'] . "</span>";
-  echo "<span id='userpage_membersince'>" . $data['member_since'] . "</span>";
-  echo "<span id='userpage_redighet'>" . $data['user_id'] . "</span>";
-}
+      echo "<span id='userpage_username'>" . $data['username'] . "</span>";
+      echo "<span id='userpage_membersince'>" . $data['member_since'] . "</span>";
+      echo "<span id='userpage_redighet'>" . $data['user_id'] . "</span>";
+    }
 
- ?>
+  ?>
 
      </span>
 
@@ -84,9 +85,9 @@ if ($result) {
 
        <form action="parse_user_bio.php" method="post" id="change_tagline">
          <textarea name="tagline_input" placeholder="x"></textarea>
-         <input type="button" id="tagline_cancel" />
+         <input type="button" id="tagline_cancel" class="tagline_symbols" onclick="cancelWriteForm();"/>
           <span id="tagline_cancel_caption">avbryt ändringar</span>
-         <input type="submit" name="submit" id="tagline_submit"/>
+         <input type="submit" name="submit" id="tagline_submit" value="" class="tagline_symbols"/>
           <span id="tagline_submit_caption">spara beskrivning</span>
        </form>
 
@@ -120,6 +121,13 @@ function showForm() {
 }
 function showWriteForm() {
   document.getElementById('change_tagline').style.display = 'block';
+  document.getElementById('tagline_container').style.display = 'none';
+  document.getElementById('tagline_write').style.display = 'none';
+}
+function cancelWriteForm() {
+  document.getElementById('change_tagline').style.display = 'none';
+  document.getElementById('tagline_container').style.display = 'inline-block';
+  document.getElementById('tagline_write').style.display = 'inline-block';
 }
 
  </script>
