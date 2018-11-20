@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="./styles/main.css">
 
 <div id="sidebar">
-  <a href="../index.php"><img src="../img/logo_text_gr.png" /></a>
+  <a href="../home/index.php"><img src="../img/logo_text_gr.png" /></a>
   <a href="index.html" class="category regular">bygdababbel</a>
   <a href="index.html" class="category regular">skola</a>
   <a href="index.html" class="category regular">politik</a>
