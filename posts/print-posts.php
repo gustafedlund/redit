@@ -15,9 +15,12 @@ if (mysqli_num_rows($res) > 0) {
     $content = $rows['post_content'];
     $date = $rows['post_date'];
     $views = $rows['post_views'];
-    $likes = $rows['post_likes'];
     $replies = $rows['post_replies'];
-
+    //Section for calculating likes on each post
+    $sqlLikes = "SELECT SUM(like_dislike) AS likes FROM likes ";
+    $sqlLikes = mysqli_query($conn, $sqlLikes);
+    $rowLikes = mysqli_fetch_assoc($sqlLikes);
+    $likes = $rowLikes['likes'];
     //Pushing HTML into the variable down here
     $printPosts .= "<div class = 'printed-post-frame'>";
 
@@ -32,6 +35,9 @@ if (mysqli_num_rows($res) > 0) {
           $printPosts .= "<span class='upvote'></span>";
           $printPosts .=  "<span class='post_rating printed-post-likes'>$likes</span>";
           $printPosts .= "<span class='downvote'></span>";
+          $printPosts .= "<form action='posts/like-parse.php' name='likeform' action='POST'>";
+          $printPosts .= "<input type = 'submit' value=$id name ='like'/>";
+          $printPosts .= "<input type = 'submit' value=$id name ='dislike'/></form>";
       $printPosts .= "</div>";
 
       $printPosts .= "<div class='post-info'>";
@@ -51,6 +57,8 @@ if (mysqli_num_rows($res) > 0) {
 } else {
   // code...
 }
+
+//Like funktion
 
 
 ?>
