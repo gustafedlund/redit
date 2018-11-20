@@ -82,12 +82,15 @@ if ($result) {
 
        </span>
 
-       <form action="x" method="post">
+       <form action="x" method="post" id="change_tagline">
          <textarea name="tagline_input" placeholder="x"></textarea>
          <input type="submit" name="submit"/>
        </form>
 
 
+       <span id="tagline_write"></span>
+       <span id="tagline_submit"></span>
+       <span id="tagline_cancel"></span>
 
      </span>
 

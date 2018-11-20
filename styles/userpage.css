@@ -106,7 +106,8 @@
 #userpage_info span {
   margin: 5%;
 }
-#userpage_tagline {
+/* tagline/bio bruh */
+#userpage_tagline { /*this is where the speech bubble is*/
   width: 40vw;
   height: 15vw;
   display: inline-block;
@@ -118,9 +119,22 @@
   position: absolute;
   bottom: 0;
   right: 5%;
+
+}
+#tagline_container, #change_tagline textarea { /* styles for the stuff in the container */
   font-size: 20px;
   font-weight: 700;
 }
+#change_tagline {
+  
+}
+#tagline_container { /* styling for showing user's existing tagline */
+  display: inline-block;
+}
+#change_tagline { /* form for changing tagline */
+  display: none;
+}
+
 #userpage_box_container {
   width: 100%;
   height: 50vh;
