@@ -126,7 +126,7 @@ include "../init/sidebar.php";
 <div id="msg_container">
 
   <?php
-
+if (isset($_POST['post_submit'])) {
   if ($_GET['error'] == 'emptyfields') {
     echo "Du måste fylla i alla fält!";
   }
@@ -148,7 +148,7 @@ include "../init/sidebar.php";
   if ($_GET['success'] == 'postcreated') {
     echo "<p class='success'>Ditt inlägg har skickats in!</p> <a href='../index.php'>Tillbaka till startsidan</a>";
   }
-
+}
   ?>
 
 </div>
