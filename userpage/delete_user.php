@@ -1,6 +1,6 @@
 <?php
 
-include "config.php";
+require "../init/config.php";
 
 $userID = $_POST['name'];
 $query = "DELETE FROM users WHERE user_id = $userID";
