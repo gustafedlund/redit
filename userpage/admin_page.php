@@ -12,7 +12,11 @@ if (mysqli_num_rows($result) >= 0) {
     $email = $row['email'];
     $post_permission = $row['post_permission'];
 
-    echo "User ID: $user_id, Username: $username, Email: $email, Post permission: $post_permission";?><br><?php
+    echo "User ID: $user_id, Username: $username, Email: $email, Post permission: $post_permission";?>
+    <form method="post" action="delete_user.php">
+      <input type="submit" value="DELETE USER" name=<?php $user_id; ?>><br>
+    </form>
+    <?php
   }
 }
 
