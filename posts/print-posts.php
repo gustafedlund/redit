@@ -27,7 +27,7 @@ if (mysqli_num_rows($res) > 0) {
     //Pushing HTML into the variable down here
     $printPosts .= "<div class = 'printed-post-frame'>";
 
-      $printPosts .= "<a href='posts/show-post.php?pid=$id' class='post-link'>";
+      $printPosts .= "<a href='../posts/show-post.php?pid=$id' class='post-link'>";
         $printPosts .= "<div class='post-left'>";
           $printPosts .= "<h2 class='printed-post-title'> $title </h2>";
           $printPosts .= "<p class='printed-post-content'> $content </p>";
