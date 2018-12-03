@@ -1,13 +1,16 @@
 <?php
 
+session_start();
 require "../init/config.php";
 
-$userID = $_POST['name'];
-$query = "DELETE FROM users WHERE user_id = $userID";
-mysqli_query($conn, $query);
+$username = $_SESSION['username'];
+$query = "DELETE FROM users WHERE username = '$username'";
+$result = mysqli_query($conn, $query);
 
-echo "User deleted";
+echo "$username was deleted";
 
 mysqli_close($conn);
+
+header("Location: admin_page.php");
 
 ?>
