@@ -41,6 +41,10 @@ if (mysqli_num_rows($res) > 0) {
     $printOp .= "<span class='date_posted'>$date</span><span class='divider'>/</span>";
     $printOp .= "</div>";
     $printOp .= "</div>";
+
+    //write comment
+    $printOp .= "<div class = 'write-comment'>";
+      $printOp .= "<form action='write-comment.php' name='commentform' action='POST'>";
   }
 }
 
