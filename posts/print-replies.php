@@ -12,18 +12,35 @@ if (mysqli_num_rows($res) > 0) {
     $title = $rows['post_title'];
     $creator = $rows['post_creator'];
     $content = $rows['post_content'];
+    $category = $rows['post_category'];
+    $replies = $rows['post_replies'];
     $date = $rows['post_date'];
     $views = $rows['post_views'];
     $likes = $rows['post_likes'];
     //Pushing HTML into the variable down here
-    $printOp .= "<a class = 'original-post-frame'>";
-      $printOp .= "<p class = 'original-post-title'>$title</p>";
-      $printOp .= "<p class = 'original-post-content'>$content</p>";
-      $printOp .= "<p class = 'original-post-creator'>$creator</p>";
-      $printOp .= "<p class = 'original-post-date'>$date</p>";
-      $printOp .= "<p class = 'original-post-views'>$views</p>";
-      $printOp .= "<p class = 'original-post-likes'>$likes</p>";
-    $printOp .= "</a>";
+    $printOp .= "<div class = 'printed-post-frame'>";
+      $printOp .= "<div class = 'post-left'>";
+        $printOp .= "<p class = 'printed-post-title'>$title</p>";
+        $printOp .= "<p class = 'printed-post-content'>$content</p>";
+      $printOp .= "</div>";
+
+    $printOp .= "<div class='post-right'>";
+        $printOp .= "<span class='upvote'></span>";
+        $printOp .=  "<span class='post_rating printed-post-likes'>$likes</span>";
+        $printOp .= "<span class='downvote'></span>";
+        $printOp .= "<form action='like-parse.php' name='likeform' action='POST'>";
+        $printOp .= "<input type = 'submit' value=$pid name ='like'/>";
+        $printOp .= "<input type = 'submit' value=$pid name ='dislike'/></form>";
+    $printOp .= "</div>";
+
+    $printOp .= "<div class='post-info'>";
+      $printOp .= "<a href='xx.php' class='links'> $category </a> <span class='divider'>/</span>";
+      $printOp .= "<span class='no_of_comments'> $replies </span><span class='comment_symbol'></span> <span class='divider'>/</span>";
+      $printOp .= "<span class='no_of_views'> $views </span><span class='view_symbol'></span> <span class='divider'>/</span>";
+      $printOp .= "<a class='links' href='../userpage/userpage.php?username=$creator' class='author'>$creator</a> <span class='divider'>/</span>";
+    $printOp .= "<span class='date_posted'>$date</span><span class='divider'>/</span>";
+    $printOp .= "</div>";
+    $printOp .= "</div>";
   }
 }
 
@@ -48,5 +65,5 @@ if (mysqli_num_rows($res2) > 0) {
 
   }
 } else {
-  echo "Ingen har kommenterat ännu, bli den första!";
+//What if there are no comments?
 }
