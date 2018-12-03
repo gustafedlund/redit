@@ -11,7 +11,6 @@ if (isset($_POST['post_submit'])) {
   $post_img = $_POST['post_img'];
   $post_category = $_POST['categories'];
   $post_creator = $_SESSION['username'];
-  $post_date = date("Y/m/d");
 
   if (empty($post_title) || empty($post_text) || $post_category == 'no_cat') {
     header("Location: ./write-posts.php?error=emptyfields");
@@ -85,7 +84,7 @@ if (isset($_POST['post_submit'])) {
 
   }
   if (!empty($_POST['post_title'])  && !empty($_POST['post_text']) && empty($_POST['post_img'])) {
-    $sql = "INSERT INTO posts (post_title, post_content, post_category, post_creator, post_date) VALUES ('$post_title', '$post_text', '$post_category', '$post_creator', '$post_date')";
+    $sql = "INSERT INTO posts (post_title, post_content, post_category, post_creator, post_date) VALUES ('$post_title', '$post_text', '$post_category', '$post_creator', NOW())";
 
     if(mysqli_query($conn, $sql)) {
       header("Location: ./write-posts.php?success=postcreated");
@@ -97,7 +96,7 @@ if (isset($_POST['post_submit'])) {
 
   }
   elseif (!empty($_POST['post_title'])  && !empty($_POST['post_text']) && !empty($_POST['post_img'])) {
-    $sql = "INSERT INTO posts (post_title, post_content, post_img, post_category, post_creator, post_date) VALUES ('$post_title', '$post_text', '$target_file', '$post_category', '$post_creator', '$post_date')";
+    $sql = "INSERT INTO posts (post_title, post_content, post_img, post_category, post_creator, post_date) VALUES ('$post_title', '$post_text', '$target_file', '$post_category', '$post_creator', NOW())";
 
     if(mysqli_query($conn, $sql)) {
       header("Location: ./write-posts.php?success=postcreated");

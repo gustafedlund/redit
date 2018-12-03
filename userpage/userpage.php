@@ -100,7 +100,29 @@ require '../init/sidebar.php';
 
   <div id='userpage_box_container'>
 
-    <span id='box1'></span>
+    <span id='box1'>
+      STARTADE TRÅDAR
+
+      <?php
+
+      $user = $_SESSION['username'];
+      $sql = "SELECT * FROM posts WHERE post_creator='$user'";
+      $result = mysqli_query($conn, $sql);
+
+      if (mysqli_num_rows($result) > 0) {
+        while ($rows = mysqli_fetch_assoc($result)) {
+          $title = $rows['post_title'];
+          $date = $rows['post_date'];
+
+          echo "<p class='list_of_posts'>
+            $title / $date
+          </p>";
+        }
+      }
+
+       ?>
+
+    </span>
     <span id='box2'></span>
     <span id='box3'></span>
     <span id='box4'></span>
