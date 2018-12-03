@@ -14,7 +14,7 @@ if (mysqli_num_rows($result) >= 0) {
     $post_permission = $row['post_permission'];
 
     echo "User ID: $user_id, Username: $username, Email: $email, Post permission: $post_permission";
-    $_SESSION['username'] = $username;
+    $_SESSION['user_delete'] = $username;
     ?>
     <form method="post" action="delete_user.php">
       <input type="submit" value="DELETE USER" name="user"><br>
