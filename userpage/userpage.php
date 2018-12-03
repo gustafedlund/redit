@@ -43,18 +43,7 @@ require '../init/sidebar.php';
 
   <?php
 
-    $user = $_SESSION['username'];
-
-    $sql = "SELECT * FROM users WHERE username='$user'";
-    $result = mysqli_query($conn, $sql);
-
-    if ($result) {
-      $data = $result->fetch_assoc();
-
-      echo "<span id='userpage_username'>" . $data['username'] . "</span>";
-      echo "<span id='userpage_membersince'>" . $data['member_since'] . "</span>";
-      echo "<span id='userpage_redighet'>" . $data['user_id'] . "</span>";
-    }
+  echo "<span id='userpage_username'>" . $_SESSION['username'] . "</span>";
 
   ?>
 
@@ -100,8 +89,8 @@ require '../init/sidebar.php';
 
   <div id='userpage_box_container'>
 
-    <span id='box1'>
-      STARTADE TRÅDAR
+    <span class="userpage_box" id='box1'>
+      <h2 class="userpage_box_title">STARTADE TRÅDAR</h2>
 
       <?php
 
@@ -123,9 +112,84 @@ require '../init/sidebar.php';
        ?>
 
     </span>
-    <span id='box2'></span>
-    <span id='box3'></span>
-    <span id='box4'></span>
+    <span class="userpage_box" id='box2'>
+      <h2 class="userpage_box_title">KOMMENTERADE TRÅDAR</h2>
+
+      <?php
+
+      $user = $_SESSION['username'];
+      $sql = "SELECT * FROM replies WHERE reply_creator='$user'";
+      $result = mysqli_query($conn, $sql);
+
+      if (mysqli_num_rows($result) > 0) {
+        while ($rows = mysqli_fetch_assoc($result)) {
+          $id = $rows['post_id'];
+
+            $query2 = "SELECT post_title FROM posts WHERE post_id='$id'";
+            $result2 = mysqli_query($query2);
+
+              if (mysqli_num_rows($result2) > 0) {
+                while ($rows2 = mysqli_fetch_assoc($result2)) {
+                  $title = $rows2['post_title'];
+
+                  echo "<p class='list_of_posts'>
+                    $title
+                  </p>";
+
+                }
+              }
+        }
+      }
+
+       ?>
+
+    </span>
+    <span class="userpage_box" id='box3'> <!-- kolla ifall en kan lägga till likes från kommentarer här också -->
+      <h2 class="userpage_box_title">REDIGHET</h2>
+
+      <?php
+
+      $user = $_SESSION['username'];
+      $sql = "SELECT post_likes FROM posts WHERE post_creator='$user'";
+      $result = mysqli_query($conn, $sql);
+
+      if (mysqli_num_rows($result) > 0) {
+        while ($rows = mysqli_fetch_assoc($result)) {
+          $like = $rows['post_likes'];
+          $likes += $like;
+        }
+
+        echo "<p class='user_redighet'>
+          $likes
+        </p>";
+
+      }
+
+       ?>
+
+
+    </span>
+    <span class="userpage_box" id='box4'>
+
+      <h2 class="userpage_box_title">MEDLEM SEDAN</h2>
+
+      <?php
+
+        $user = $_SESSION['username'];
+
+        $sql = "SELECT member_since FROM users WHERE username='$user'";
+        $result = mysqli_query($conn, $sql);
+
+        if ($result) {
+          $data = $result->fetch_assoc();
+
+          echo "<p class='user_membersince'>" . $data['member_since'] . "</p>";
+
+        }
+
+      ?>
+
+    </span>
 
   </div>
 
