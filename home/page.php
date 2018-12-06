@@ -1,7 +1,7 @@
 <?php
   require "../init/config.php";
   require "../init/header.php";
-  include "../posts/print-posts-category.php";
+  include "../posts/print-posts.php";
  ?>
 
 <body>

@@ -2,7 +2,33 @@
 session_start();
 require "../init/config.php";
 
-$sql = "SELECT * FROM posts ORDER BY post_date DESC";
+if ($_GET['category'] == 'bygdababbel') {
+  $sql = "SELECT * FROM posts WHERE post_category='bygdababbel' ORDER BY post_date DESC";
+}
+elseif ($_GET['category'] == 'plugg') {
+  $sql = "SELECT * FROM posts WHERE post_category='plugg' ORDER BY post_date DESC";
+}
+elseif ($_GET['category'] == 'politik') {
+  $sql = "SELECT * FROM posts WHERE post_category='politik' ORDER BY post_date DESC";
+}
+elseif ($_GET['category'] == 'raggarbilar') {
+  $sql = "SELECT * FROM posts WHERE post_category='raggarbilar' ORDER BY post_date DESC";
+}
+elseif ($_GET['category'] == 'jippon') {
+  $sql = "SELECT * FROM posts WHERE post_category='jippon' ORDER BY post_date DESC";
+}
+elseif ($_GET['category'] == 'nyheter') {
+  $sql = "SELECT * FROM posts WHERE post_category='nyheter' ORDER BY post_date DESC";
+}
+elseif ($_GET['category'] == 'meme') {
+  $sql = "SELECT * FROM posts WHERE post_category='meme' ORDER BY post_date DESC";
+}
+elseif ($_GET['category'] == 'dagensbild') {
+  $sql = "SELECT * FROM posts WHERE post_category='dagensbild' ORDER BY post_date DESC";
+} else {
+  $sql = "SELECT * FROM posts ORDER BY post_date DESC";
+}
+
 $res = mysqli_query($conn, $sql) or die(mysqli_error($conn));
 
 $printPosts = ""; // We push html to be printed into this variable
@@ -12,6 +38,7 @@ if (mysqli_num_rows($res) > 0) {
     $id = $rows['post_id'];
     $title = $rows['post_title'];
     $category = $rows['post_category'];
+      $category_link = "../home/page.php?category=$category";
     $creator = $rows['post_creator'];
     $content = $rows['post_content'];
     $date = $rows['post_date'];
@@ -44,7 +71,7 @@ if (mysqli_num_rows($res) > 0) {
       $printPosts .= "</div>";
 
       $printPosts .= "<div class='post-info'>";
-        $printPosts .= "<a href='xx.php' class='links'> $category </a> <span class='divider'>/</span>";
+        $printPosts .= "<a href='$category_link' class='links'> $category </a> <span class='divider'>/</span>";
         $printPosts .= "<span class='no_of_comments'> $replies </span><span class='comment_symbol'></span> <span class='divider'>/</span>";
         $printPosts .= "<span class='no_of_views'> $views </span><span class='view_symbol'></span> <span class='divider'>/</span>";
         $printPosts .= "<a class='links' href='../userpage/user.php?username=$creator' class='author'>$creator</a> <span class='divider'>/</span>";
