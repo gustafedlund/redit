@@ -125,29 +125,29 @@ include "../init/sidebar.php";
 <div id="msg_container">
 
   <?php
-if (isset($_POST['post_submit'])) {
-  if ($_GET['error'] == 'emptyfields') {
-    echo "Du måste fylla i alla fält!";
-  }
-  elseif ($_GET['error'] == 'forbiddenchars') {
-    echo "Ditt inlägg innehåller förbjudna tecken...";
-  }
-  elseif ($_GET['error'] == 'toolarge') {
-    echo "Din bild är för stor!";
-  }
-  elseif ($_GET['error'] == 'wrongformat') {
-    echo "Din bild får endast vara i format JPG, PNG eller GIF!";
-  }
-  elseif ($_GET['error'] == 'notuploaded') {
-    echo "Din bild laddades inte upp...";
-  }
-  elseif ($_GET['error'] == 'notposted') {
-    echo "Något gick fel, ditt inlägg har inte skickats in...";
-  }
-  elseif ($_GET['success'] == 'postcreated') {
-    echo "<p class='success'>Ditt inlägg har skickats in!</p> <a href='../index.php'>Tillbaka till startsidan</a>";
-  }
-}
+    if (isset($_POST['post_submit'])) {
+      if ($_GET['error'] == 'emptyfields') {
+        echo "Du måste fylla i alla fält!";
+      }
+      elseif ($_GET['error'] == 'forbiddenchars') {
+        echo "Ditt inlägg innehåller förbjudna tecken...";
+      }
+      elseif ($_GET['error'] == 'toolarge') {
+        echo "Din bild är för stor!";
+      }
+      elseif ($_GET['error'] == 'wrongformat') {
+        echo "Din bild får endast vara i format JPG, PNG eller GIF!";
+      }
+      elseif ($_GET['error'] == 'notuploaded') {
+        echo "Din bild laddades inte upp...";
+      }
+      elseif ($_GET['error'] == 'notposted') {
+        echo "Något gick fel, ditt inlägg har inte skickats in...";
+      }
+      elseif ($_GET['success'] == 'postcreated') {
+        echo "<p class='success'>Ditt inlägg har skickats in!</p> <a href='../index.php'>Tillbaka till startsidan</a>";
+      }
+    }
   ?>
 
 </div>
@@ -162,13 +162,13 @@ if (isset($_POST['post_submit'])) {
     <select name="categories" form="write_post_form">
       <option value="no_cat">Välj en kategori...</option>
       <option value="bygdababbel">Bygdababbel</option>
-      <option value="skola">Skola</option>
+      <option value="plugg">Plugg</option>
       <option value="politik">Politik</option>
-      <option value="volvo">Volvo</option>
-      <option value="handelser">Händelser</option>
+      <option value="raggarbilar">Raggarbilar</option>
+      <option value="jippon">Jippon</option>
       <option value="nyheter">Nyheter</option>
-      <option value="meme">Memes</option>
-      <option value="dagens-bild">Dagens bild</option>
+      <option value="meme">Meme</option>
+      <option value="dagensbild">Dagens bild</option>
     </select><br />
 
   <span id='cancel-submit-container'>

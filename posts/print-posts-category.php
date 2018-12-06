@@ -2,7 +2,31 @@
 session_start();
 require "../init/config.php";
 
-$sql = "SELECT * FROM posts ORDER BY post_date DESC";
+if ($_GET['category'] == 'bygdababbel') {
+  $sql = "SELECT * FROM posts WHERE post_category='bygdababbel' ORDER BY post_date DESC";
+}
+elseif ($_GET['category'] == 'plugg') {
+  $sql = "SELECT * FROM posts WHERE post_category='plugg' ORDER BY post_date DESC";
+}
+elseif ($_GET['category'] == 'politik') {
+  $sql = "SELECT * FROM posts WHERE post_category='politik' ORDER BY post_date DESC";
+}
+elseif ($_GET['category'] == 'raggarbilar') {
+  $sql = "SELECT * FROM posts WHERE post_category='raggarbilar' ORDER BY post_date DESC";
+}
+elseif ($_GET['category'] == 'jippon') {
+  $sql = "SELECT * FROM posts WHERE post_category='jippon' ORDER BY post_date DESC";
+}
+elseif ($_GET['category'] == 'nyheter') {
+  $sql = "SELECT * FROM posts WHERE post_category='nyheter' ORDER BY post_date DESC";
+}
+elseif ($_GET['category'] == 'meme') {
+  $sql = "SELECT * FROM posts WHERE post_category='meme' ORDER BY post_date DESC";
+}
+elseif ($_GET['category'] == 'dagensbild') {
+  $sql = "SELECT * FROM posts WHERE post_category='dagensbild' ORDER BY post_date DESC";
+}
+
 $res = mysqli_query($conn, $sql) or die(mysqli_error($conn));
 
 $printPosts = ""; // We push html to be printed into this variable

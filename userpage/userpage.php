@@ -32,7 +32,7 @@ require '../init/sidebar.php';
 
        <label for="avatar_upload" id="avatar_upload_label" onclick="showForm();">ändra profilbild...</label> <input type="file" name="avatar_upload" id="avatar_upload" />
 
-       <span id="file_uploaded"><?php echo "ERROR MEDDELANDEN"; ?></span><br />
+       <span id="file_uploaded"><?php echo "ladda upp jpg, png eller gif, max 1MB"; ?></span><br />
 
        <input type="submit" name="submit_avatar" value="" id="change_avatar_submit" />
 
@@ -73,7 +73,20 @@ require '../init/sidebar.php';
        </span>
 
        <form action="parse_user_bio.php" method="post" id="change_tagline">
-         <textarea name="tagline_input" placeholder="x"></textarea>
+         <textarea name="tagline_input" placeholder="
+<?php
+         $user = $_SESSION['username'];
+         $sql = "SELECT bio FROM users WHERE username='$user'";
+         $result = mysqli_query($conn, $sql);
+         if ($result) {
+           $data = $result->fetch_assoc();
+           if ($data['bio'] !== NULL) {
+             echo $data['bio'];
+           }
+         }
+
+?>
+         "></textarea>
          <input type="button" id="tagline_cancel" class="tagline_symbols" onclick="cancelWriteForm();"/>
           <span id="tagline_cancel_caption">avbryt ändringar</span>
          <input type="submit" name="submit" id="tagline_submit" value="" class="tagline_symbols"/>

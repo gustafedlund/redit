@@ -45,10 +45,9 @@ require '../init/sidebar.php';
          $data = $result->fetch_assoc();
          if ($data['bio'] !== NULL) {
            echo $data['bio'];
-         } else {
-           echo $_GET['username'] . "har inte skrivit något om sig själv än...";
          }
        }
+
         ?>
      </span>
    </span>

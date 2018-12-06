@@ -51,6 +51,9 @@ a.post-link {
     height: 5vh;
     background-size: contain;
     background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    color: rgba(0, 0, 0, 0);
   }
   .post-right .upvote {
     background-image: url(../img/upvote.png);

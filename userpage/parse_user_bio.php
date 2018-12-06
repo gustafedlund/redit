@@ -9,13 +9,12 @@ require "../init/config.php";
   if (empty($user_bio)) {
     header("Location: userpage.php?error=notext");
     exit();
-  } elseif (!preg_match("/^[A-Za-zåäöÅÄÖ 0-9]*$/", $user_bio)) {
+  } elseif (!preg_match("/^[A-Za-zåäöÅÄÖ 0-9 .;:!?&#<()]*$/", $user_bio)) {
     header("Location: userpage.php?error=forbiddenchars");
     exit();
   }
 
   if(!empty($_POST['tagline_input'])) {
-
 
     $sql = "UPDATE users SET bio='$user_bio' WHERE username='$user'";
     $result = mysqli_query($conn, $sql);
