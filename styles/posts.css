@@ -30,16 +30,17 @@ a.post-link {
     font-size: 1.5em;
     font-weight: 600;
     margin: 0;
-    position: absolute;
-    top: 2vh;
     max-width: 85%;
   }
    p.printed-post-content {
     font-size: 0.8em;
     margin: 0;
-    position: absolute;
-    top: 6.5vh;
     max-width: 85%;
+  }
+  .post_img {
+    height: 15vh;
+    display: block;
+    margin: 10px 0 20px 0;
   }
 .post-right {
   float: right;

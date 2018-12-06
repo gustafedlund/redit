@@ -93,7 +93,7 @@ if (isset($_POST['post_submit']) && isset($_FILES['file'])) {
 
   if (in_array($fileActualExt, $allowed)) {
     if ($fileError === 0) {
-      if ($fileSize < 1000000000) {
+      if ($fileSize < 100000) {
         $fileNameNew = "post_" . uniqid('', true) . "." . $fileActualExt;
         $fileDestination = '../uploads/upload_post/' . $fileNameNew;
         move_uploaded_file($fileTmpName, $fileDestination);

@@ -60,7 +60,7 @@ if (mysqli_num_rows($res) > 0) {
           $printPosts .= "<h2 class='printed-post-title'> $title </h2>";
           $printPosts .= "<p class='printed-post-content'> $content </p>";
           if ($image != NULL) {
-            $printPosts .= "<img src='../posts/uploads/$image' class='post_img' />";
+            $printPosts .= "<img src='../posts/uploads/$image' class='post_img' alt='bild till tråden' />";
           }
         $printPosts .= "</div>";
       $printPosts .= "</a>";
