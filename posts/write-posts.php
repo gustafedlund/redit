@@ -8,7 +8,6 @@ if (isset($_POST['post_submit'])) {
 
   $post_title = $_POST['post_title'];
   $post_text = $_POST['post_text'];
-  $post_img = $_POST['post_img'];
   $post_category = $_POST['categories'];
   $post_creator = $_SESSION['username'];
 
@@ -20,70 +19,8 @@ if (isset($_POST['post_submit'])) {
     header("Location: ./write-posts.php?error=forbiddenchars");
     exit();
   }
-  if(!empty($_POST['post_img'])) {
 
-    $target_dir = "../uploads/upload_posts";
-    $target_file = $target_dir . basename($_FILES["post_img"]["name"]);
-    $uploadOk = 1;
-    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-    $allowed = array('jpg', 'jpeg', 'png', 'gif');
-
-    /*$check = getimagesize($_FILES["post_img"]["tmp_name"]);
-
-    // is file an image?
-
-    if ($check !== false) {
-      header("Location: ./write-posts.php?success=fileisimage");
-      $uploadOk = 1;
-      exit();
-    }
-    else {
-      header("Location: ./write-posts.php?error=notanimage");
-      $uploadOk = 0;
-      exit();
-    }*/
-
-    // is file too large?
-
-    if ($_FILES["post_img"]["size"] > 1000000) {
-      header("Location: ./write-posts.php?error=toolarge");
-      $uploadOk = 0;
-      exit();
-    }
-
-    // is file the right format? - - - - - - - i'm stuck here fam
-
-    if(!in_array($imageFileType, $allowed)) {
-      header("Location: ./write-posts.php?error=wrongformat");
-      $uploadOk = 0;
-      exit();
-    }
-
-    /*if ($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType != "png" && $imageFileType != "gif") {
-      header("Location: ./write-posts.php?error=wrongformat");
-      $uploadOk = 0;
-      exit();
-    }*/
-
-    // is file uploaded?
-
-    if ($uploadOk == 0) {
-      header("Location: ./write-posts.php?error=notuploaded");
-      exit();
-    }
-    else {
-      if (move_uploaded_file($_FILES["post_img"]["name"], $target_file)) {
-        header("Location: ./write-posts.php?success=fileuploaded");
-        exit();
-      }
-      else {
-        header("Location: ./write-posts.php?error=notuploaded");
-        exit();
-      }
-    }
-
-  }
-  if (!empty($_POST['post_title'])  && !empty($_POST['post_text']) && empty($_POST['post_img'])) {
+  if (!empty($_POST['post_title'])  && !empty($_POST['post_text'])) {
     $sql = "INSERT INTO posts (post_title, post_content, post_category, post_creator, post_date) VALUES ('$post_title', '$post_text', '$post_category', '$post_creator', NOW())";
 
     if(mysqli_query($conn, $sql)) {
@@ -93,27 +30,8 @@ if (isset($_POST['post_submit'])) {
       header("Location: ./write-posts.php?error=notposted");
       exit();
     }
-
   }
-  elseif (!empty($_POST['post_title'])  && !empty($_POST['post_text']) && !empty($_POST['post_img'])) {
-    $sql = "INSERT INTO posts (post_title, post_content, post_img, post_category, post_creator, post_date) VALUES ('$post_title', '$post_text', '$target_file', '$post_category', '$post_creator', NOW())";
-
-    if(mysqli_query($conn, $sql)) {
-      header("Location: ./write-posts.php?success=postcreated");
-      exit();
-    } else {
-      header("Location: ./write-posts.php?error=notposted");
-      exit();
-    }
-
-  }
-
-
-
-} /*else {
-  header("Location: ../index.php");
-  exit();
-}*/
+}
 
 include "../init/header.php";
 include "../init/sidebar.php";
@@ -167,8 +85,6 @@ include "../init/sidebar.php";
       <option value="raggarbilar">Raggarbilar</option>
       <option value="jippon">Jippon</option>
       <option value="nyheter">Nyheter</option>
-      <option value="meme">Meme</option>
-      <option value="dagensbild">Dagens bild</option>
     </select><br />
 
   <span id='cancel-submit-container'>

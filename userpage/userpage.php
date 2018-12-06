@@ -54,8 +54,7 @@ require '../init/sidebar.php';
 
        <span id='tagline_container'>
 
-         <?php
-
+      <?php
          $user = $_SESSION['username'];
          $sql = "SELECT bio FROM users WHERE username='$user'";
          $result = mysqli_query($conn, $sql);
@@ -67,8 +66,7 @@ require '../init/sidebar.php';
              echo "skriv något om dig själv";
            }
          }
-
-          ?>
+      ?>
 
        </span>
 

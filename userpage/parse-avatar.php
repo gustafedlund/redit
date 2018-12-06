@@ -47,7 +47,8 @@ require '../init/config.php';
         header("Location: ./userpage.php?success=imageuploaded");
         exit();
       } else {
-        echo "error";
+        header("Location: ./userpage.php?error=notuploadedmove");
+        exit();
       }
 
       exit();
