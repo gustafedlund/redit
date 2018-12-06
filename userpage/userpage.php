@@ -30,11 +30,26 @@ require '../init/sidebar.php';
 
      <form method="post" action="parse-avatar.php" name="change_avatar_form" enctype="multipart/form-data" id="change_avatar_form">
 
-       <label for="avatar_upload" id="avatar_upload_label" onclick="showForm();">ändra profilbild...</label> <input type="file" name="avatar_upload" id="avatar_upload" />
+       <label for="avatar_upload" id="avatar_upload_label" onclick="showForm();">ändra profilbild...</label> <input type="file" name="file" id="avatar_upload" />
 
-       <span id="file_uploaded"><?php echo "ladda upp jpg, png eller gif, max 1MB"; ?></span><br />
+       <span id="file_uploaded">
 
-       <input type="submit" name="submit_avatar" value="" id="change_avatar_submit" />
+         <?php
+          if ($_GET['error'] == "filesize") {
+            echo "<span class='errormsg_general'>bilden är för stor!</span>";
+          }
+          elseif ($_GET['error'] == "uploaderr") {
+            echo "<span class='errormsg_general'>något gick fel...</span>";
+          }
+          elseif ($_GET['error'] == "filetype") {
+            echo "<span class='errormsg_general'>bilden är i fel format!</span>";
+          }
+          else {
+            echo "ladda upp jpg, png eller gif, max 1MB";
+          }
+         ?>
+       </span><br />
+       <input type="submit" name="submit" value="" id="change_avatar_submit" />
 
      </form>
 
@@ -62,9 +77,9 @@ require '../init/sidebar.php';
            $data = $result->fetch_assoc();
            if ($data['bio'] !== NULL) {
              echo $data['bio'];
-           } else {
-             echo "skriv något om dig själv";
            }
+         } else {
+           echo "skriv något om dig själv";
          }
       ?>
 

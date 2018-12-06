@@ -16,7 +16,7 @@
 
 <form method="post" action="./parse-login.php">
 
-  <span class="errormsg_general">
+  <span class='errormsg_general'>
 
     <?php
 
