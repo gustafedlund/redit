@@ -1,13 +1,13 @@
 <div id="sidebar">
   <a href="../home/index.php"><img src="../img/logo_text_gr.png" /></a>
-  <a href="../home/page.php?category=bygdababbel" class="category regular <?php if ($_GET['category'] == 'bygdababbel') { echo "bold"; } ?> ">bygdababbel</a>
-  <a href="../home/page.php?category=plugg" class="category regular <?php if ($_GET['category'] == 'plugg') { echo "bold"; } ?> ">plugg</a>
-  <a href="../home/page.php?category=politik" class="category regular <?php if ($_GET['category'] == 'politik') { echo "bold"; } ?> ">politik</a>
-  <a href="../home/page.php?category=raggarbilar" class="category regular <?php if ($_GET['category'] == 'raggarbilar') { echo "bold"; } ?> ">raggarbilar</a>
-  <a href="../home/page.php?category=jippon" class="category regular <?php if ($_GET['category'] == 'jippon') { echo "bold"; } ?> ">jippon</a>
-  <a href="../home/page.php?category=nyheter" class="category regular <?php if ($_GET['category'] == 'nyheter') { echo "bold"; } ?> ">nyheter</a>
-  <a href="../home/page.php?category=meme" class="category regular <?php if ($_GET['category'] == 'meme') { echo "bold"; } ?> ">meme</a>
-  <a href="../home/page.php?category=dagensbild" class="category regular <?php if ($_GET['category'] == 'dagensbild') { echo "bold"; } ?> ">dagens bild</a>
+  <a href="../home/index.php?category=bygdababbel" class="category regular <?php if ($_GET['category'] == 'bygdababbel') { echo "bold"; } ?> ">bygdababbel</a>
+  <a href="../home/index.php?category=plugg" class="category regular <?php if ($_GET['category'] == 'plugg') { echo "bold"; } ?> ">plugg</a>
+  <a href="../home/index.php?category=politik" class="category regular <?php if ($_GET['category'] == 'politik') { echo "bold"; } ?> ">politik</a>
+  <a href="../home/index.php?category=raggarbilar" class="category regular <?php if ($_GET['category'] == 'raggarbilar') { echo "bold"; } ?> ">raggarbilar</a>
+  <a href="../home/index.php?category=jippon" class="category regular <?php if ($_GET['category'] == 'jippon') { echo "bold"; } ?> ">jippon</a>
+  <a href="../home/index.php?category=nyheter" class="category regular <?php if ($_GET['category'] == 'nyheter') { echo "bold"; } ?> ">nyheter</a>
+  <a href="../home/index.php?category=meme" class="category regular <?php if ($_GET['category'] == 'meme') { echo "bold"; } ?> ">meme</a>
+  <a href="../home/index.php?category=dagensbild" class="category regular <?php if ($_GET['category'] == 'dagensbild') { echo "bold"; } ?> ">dagens bild</a>
     <div id='char-indicator'>
 
 
