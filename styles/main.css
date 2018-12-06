@@ -87,6 +87,17 @@ body {
         color: #ececec;
         text-decoration: none;
       }
+      #sidebar #char-indicator input {
+        background-color: rgba(255, 0, 0, 0);
+        border: none;
+        font-size: 1em;
+        line-height: 1.75em;
+        padding: 0;
+        color: #ececec;
+      }
+      #sidebar #char-indicator input:hover {
+        font-weight: 700;
+      }
 #maincontent {
   position: fixed;
   top: 0;

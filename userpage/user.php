@@ -14,7 +14,7 @@ require '../init/sidebar.php';
 
      <?php
 
-     $user = $_SESSION['username'];
+     $user = $_GET['username'];
      $sql = "SELECT avatar FROM users WHERE username='$user'";
      $result = mysqli_query($conn, $sql);
      if ($result) {
@@ -28,64 +28,31 @@ require '../init/sidebar.php';
 
       ?>
 
-     <form method="post" action="parse-avatar.php" name="change_avatar_form" enctype="multipart/form-data" id="change_avatar_form">
+    <span id='userpage_info'>
+      <?php
+        echo "<span id='userpage_username'>" . $_GET['username'] . "</span>";
+      ?>
+    </span>
 
-       <label for="avatar_upload" id="avatar_upload_label" onclick="showForm();">ändra profilbild...</label> <input type="file" name="avatar_upload" id="avatar_upload" />
+   <span id='userpage_tagline'>
 
-       <span id="file_uploaded"><?php echo "ERROR MEDDELANDEN"; ?></span><br />
-
-       <input type="submit" name="submit_avatar" value="" id="change_avatar_submit" />
-
-     </form>
-
-
-     <span id='userpage_info'>
-
-  <?php
-
-  echo "<span id='userpage_username'>" . $_SESSION['username'] . "</span>";
-
-  ?>
-
-     </span>
-
-
-     <span id='userpage_tagline'>
-
-       <span id='tagline_container'>
-
-         <?php
-
-         $user = $_SESSION['username'];
-         $sql = "SELECT bio FROM users WHERE username='$user'";
-         $result = mysqli_query($conn, $sql);
-         if ($result) {
-           $data = $result->fetch_assoc();
-           if ($data['bio'] !== NULL) {
-             echo $data['bio'];
-           } else {
-             echo "skriv något om dig själv";
-           }
+     <span id='tagline_container'>
+       <?php
+       $user = $_GET['username'];
+       $sql = "SELECT bio FROM users WHERE username='$user'";
+       $result = mysqli_query($conn, $sql);
+       if ($result) {
+         $data = $result->fetch_assoc();
+         if ($data['bio'] !== NULL) {
+           echo $data['bio'];
+         } else {
+           echo $_GET['username'] . "har inte skrivit något om sig själv än...";
          }
-
-          ?>
-
-       </span>
-
-       <form action="parse_user_bio.php" method="post" id="change_tagline">
-         <textarea name="tagline_input" placeholder="x"></textarea>
-         <input type="button" id="tagline_cancel" class="tagline_symbols" onclick="cancelWriteForm();"/>
-          <span id="tagline_cancel_caption">avbryt ändringar</span>
-         <input type="submit" name="submit" id="tagline_submit" value="" class="tagline_symbols"/>
-          <span id="tagline_submit_caption">spara beskrivning</span>
-       </form>
-
-
-       <button class="tagline_symbols" id="tagline_write" onclick="showWriteForm();"></button>
-        <span id="tagline_write_caption">ändra beskrivning</span>
+       }
+        ?>
      </span>
-
    </span>
+</span>
 
   <div id='userpage_box_container'>
 
@@ -94,7 +61,7 @@ require '../init/sidebar.php';
 
       <?php
 
-      $user = $_SESSION['username'];
+      $user = $_GET['username'];
       $sql = "SELECT * FROM posts WHERE post_creator='$user'";
       $result = mysqli_query($conn, $sql);
 
@@ -115,7 +82,7 @@ require '../init/sidebar.php';
     <span class="userpage_box" id='box2'>
       <h2 class="userpage_box_title">kommenterade trådar</h2>
         <?php
-        $user = $_SESSION['username'];
+        $user = $_GET['username'];
         $sql = "SELECT * FROM replies WHERE reply_creator='$user'";
         $result = mysqli_query($conn, $sql);
         if (mysqli_num_rows($result) > 0) {
@@ -144,7 +111,7 @@ require '../init/sidebar.php';
       <span class="member_since">
         medlem sedan
         <?php
-          $user = $_SESSION['username'];
+          $user = $_GET['username'];
           $sql = "SELECT member_since FROM users WHERE username='$user'";
           $result = mysqli_query($conn, $sql);
           if ($result) {
@@ -157,7 +124,7 @@ require '../init/sidebar.php';
       <span class="redighet"> <!-- likes från kommentarer? kanske att de ger +0.1 eller så? -->
         redighet:
         <?php
-        $user = $_SESSION['username'];
+        $user = $_GET['username'];
         $sql = "SELECT post_likes FROM posts WHERE post_creator='$user'";
         $result = mysqli_query($conn, $sql);
         if (mysqli_num_rows($result) > 0) {
@@ -169,18 +136,6 @@ require '../init/sidebar.php';
           echo $likes;
         }
          ?>
-      </span>
-      /
-      <span class="email_show">
-        <?php
-            $user = $_SESSION['username'];
-            $sql = "SELECT email FROM users WHERE username='$user'";
-            $result = mysqli_query($conn, $sql);
-            if ($result) {
-              $data = $result->fetch_assoc();
-              echo $data['email'];
-            }
-          ?>
       </span>
     </div>
   </div>

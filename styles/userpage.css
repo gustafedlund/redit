@@ -1,4 +1,4 @@
-.userpage_maincontent {
+#userpage_maincontent {
   background-color: rgba(92,144,168,0.5);
   position: fixed;
   top: 0;
@@ -6,7 +6,7 @@
   width: 60vw;
   height: 100vh;
   margin-left: 20vw;
-  overflow: scroll;
+  overflow: hidden;
 }
 #userpage_top {
   display: inline-block;
@@ -42,7 +42,6 @@
   border-radius: 50%;
   padding: 10% 2.5%;
   text-align: center;
-
   display: none;
 }
   #avatar_upload {
@@ -125,7 +124,6 @@
   position: absolute;
   background-color: rgba(0,0,0,0);
   border: none;
-
 }
   #tagline_write_caption, #tagline_submit_caption, #tagline_cancel_caption {
       position: absolute;
@@ -174,34 +172,26 @@ input#tagline_submit {
 }
 
 #userpage_box_container {
+  height: 60vh;
   width: 100%;
-  height: 50vh;
   color: #fff;
   display: flex;
   align-items: stretch;
   align-content: center;
   flex-wrap: wrap;
   position: absolute;
+  left: 0;
   bottom: 0;
 }
 #userpage_box_container span {
+  height: 40vh;
   width: 50%;
-  height: 60%;
   margin: 0;
-  display: inline-block;
   padding: 0 2.5%;
   overflow: scroll;
 }
-#userpage_box_container span:nth-child(1),
-#userpage_box_container span:nth-child(4) {
-  background-color: rgba(92,144,168,0.7);
-}
-#userpage_box_container span:nth-child(2),
-#userpage_box_container span:nth-child(3) {
-  background-color: rgba(92,144,168,0.3);
-}
 .userpage_box_title {
-  font-size: 1.7em;
+  font-size: 2em;
   margin-bottom: 5px;
 }
 .list_of_posts {
@@ -213,4 +203,11 @@ input#tagline_submit {
 }
 .list_of_posts:nth-child(even) {
   background-color: rgba(255, 255, 255, 0.1);
+}
+div.userpage_bottom {
+  text-align: center;
+  font-size: 1.2em;
+  width: 100%;
+  position: absolute;
+  bottom: 2%;
 }
