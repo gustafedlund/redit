@@ -20,8 +20,8 @@ elseif ($_GET['category'] == 'jippon') {
 elseif ($_GET['category'] == 'nyheter') {
   $sql = "SELECT * FROM posts WHERE post_category='nyheter' ORDER BY post_date DESC";
 }
-elseif ($_GET['category'] == 'meme') {
-  $sql = "SELECT * FROM posts WHERE post_category='meme' ORDER BY post_date DESC";
+elseif ($_GET['category'] == 'memes') {
+  $sql = "SELECT * FROM posts WHERE post_category='memes' ORDER BY post_date DESC";
 }
 elseif ($_GET['category'] == 'dagensbild') {
   $sql = "SELECT * FROM posts WHERE post_category='dagensbild' ORDER BY post_date DESC";
@@ -41,6 +41,7 @@ if (mysqli_num_rows($res) > 0) {
       $category_link = "../home/index.php?category=$category";
     $creator = $rows['post_creator'];
     $content = $rows['post_content'];
+    $image = $rows['post_img'];
     $date = $rows['post_date'];
     $views = $rows['post_views'];
     $replies = $rows['post_replies'];
@@ -58,6 +59,9 @@ if (mysqli_num_rows($res) > 0) {
         $printPosts .= "<div class='post-left'>";
           $printPosts .= "<h2 class='printed-post-title'> $title </h2>";
           $printPosts .= "<p class='printed-post-content'> $content </p>";
+          if ($image != NULL) {
+            $printPosts .= "<img src='../posts/uploads/$image' class='post_img' />";
+          }
         $printPosts .= "</div>";
       $printPosts .= "</a>";
 

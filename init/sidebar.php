@@ -6,6 +6,8 @@
   <a href="../home/index.php?category=raggarbilar" class="category regular <?php if ($_GET['category'] == 'raggarbilar') { echo "bold"; } ?> ">raggarbilar</a>
   <a href="../home/index.php?category=jippon" class="category regular <?php if ($_GET['category'] == 'jippon') { echo "bold"; } ?> ">jippon</a>
   <a href="../home/index.php?category=nyheter" class="category regular <?php if ($_GET['category'] == 'nyheter') { echo "bold"; } ?> ">nyheter</a>
+  <a href="../home/index.php?category=memes" class="category regular <?php if ($_GET['category'] == 'memes') { echo "bold"; } ?> ">memes</a>
+  <a href="../home/index.php?category=dagensbild" class="category regular <?php if ($_GET['category'] == 'dagensbild') { echo "bold"; } ?> ">dagens bild</a>
 
   <div id='char-indicator'>
 
