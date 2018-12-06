@@ -39,12 +39,19 @@ if (mysqli_num_rows($res) > 0) {
       $printOp .= "<span class='no_of_views'> $views </span><span class='view_symbol'></span> <span class='divider'>/</span>";
       $printOp .= "<a class='links' href='../userpage/userpage.php?username=$creator' class='author'>$creator</a> <span class='divider'>/</span>";
     $printOp .= "<span class='date_posted'>$date</span><span class='divider'>/</span>";
+
+    if ($_SESSION['admin'] == 1) {
+        $printReplies .= "<form method='post' action='../posts/delete-posts.php'><input type='submit' name='delete' value='Delete post'></input></form>";
+    }
     $printOp .= "</div>";
-    $printOp .= "</div>";
+  $printOp .= "</div>";
 
     //write comment
     $printOp .= "<div class = 'write-comment'>";
       $printOp .= "<form action='write-comment.php' name='commentform' action='POST'>";
+        $printOp .= "<input class='write-comment-field' type='text' placeholder='Vad tycker du?' name='comment'>";
+        $printOp .= "<input class='write-comment-submit' type='submit' value='Skicka' name='submit-comment'></form>";
+    $printOp .= "</div>";
   }
 }
 
@@ -55,17 +62,37 @@ $printReplies = "";
 
 if (mysqli_num_rows($res2) > 0) {
   while($rows2 = mysqli_fetch_assoc($res2)) {
+    $rid = $rows2['reply_id'];
     $replyCreator = $rows2['reply_creator'];
     $replyContent = $rows2['reply_content'];
     $replyDate = $rows2['reply_date'];
     $replyLikes = $rows2['reply_likes'];
 
-    $printReplies .= "<span class = 'reply-frame'> ";
-      $printReplies .= "<p class = 'reply-creator'>$replyCreator</p>";
-      $printReplies .= "<p class = 'reply-content'>$replyContent</p>";
-      $printReplies .= "<p class = 'reply-date'>$replyDate</p>";
-      $printReplies .= "<p class = 'reply-likes'>$replyLikes</p>";
-    $printReplies .= "</span>";
+    $printReplies .= "<div class = 'printed-post-frame'>";
+
+        $printReplies .= "<div class='post-left'>";
+          $printReplies .= "<p class='printed-post-content'> $replyContent </p>";
+        $printReplies .= "</div>";
+
+    $printReplies .= "<div class='post-right'>";
+        $printReplies .= "<span class='upvote'></span>";
+        $printReplies .=  "<span class='post_rating printed-post-likes'>$replyLikes</span>";
+        $printReplies .= "<span class='downvote'></span>";
+        $printReplies .= "<form action='../posts/xx.php' name='likeform' action='POST'>";
+        $printReplies .= "<input type = 'submit' value=$rid name ='like'/>";
+        $printReplies .= "<input type = 'submit' value=$rid name ='dislike'/></form>";
+    $printReplies .= "</div>";
+
+    $printReplies .= "<div class='post-info'>";
+      $printReplies .= "<a class='links' href='../userpage/userpage.php?username=$replyCreator' class='author'>$replyCreator</a> <span class='divider'>/</span>";
+      $printReplies .= "<span class='date_posted'>$replyDate</span><span class='divider'>/</span>";
+
+      if ($_SESSION['admin'] == 1) {
+          $printReplies .= "<form method='post' action='../posts/delete-posts.php'><input type='submit' name='delete' value='Delete post'></input></form>";
+      }
+    $printReplies .= "</div>";
+
+   $printReplies .= "</div>";
 
   }
 } else {
