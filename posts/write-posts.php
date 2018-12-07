@@ -28,7 +28,7 @@ if (isset($_POST['post_submit'])) {
 
     if (in_array($fileActualExt, $allowed)) {
       if ($fileError === 0) {
-        if ($fileSize < 100000) {
+        if ($fileSize < 1000000) {
           $fileNameNew = "post_" . $post_creator . mt_rand() . "." . $fileActualExt;
           $fileDestination = 'uploads/' . $fileNameNew;
           move_uploaded_file($fileTmpName, $fileDestination);
@@ -68,61 +68,11 @@ if (isset($_POST['post_submit'])) {
   }
 }
 
-
-
-
-if (isset($_POST['post_submit']) && isset($_FILES['file'])) {
-  $post_title = $_POST['post_title'];
-  $post_text = $_POST['post_text'];
-  $post_category = $_POST['categories'];
-  $post_creator = $_SESSION['username'];
-
-  $file = $_FILES['file'];
-  $fileNameNew = NULL;
-
-  $fileName = $_FILES['file']['name'];
-  $fileTmpName = $_FILES['file']['tmp_name'];
-  $fileSize = $_FILES['file']['size'];
-  $fileError = $_FILES['file']['error'];
-  $fileType = $_FILES['file']['type'];
-
-  $fileExt = explode('.', $fileName);
-  $fileActualExt = strtolower(end($fileExt));
-
-  $allowed = array('jpg', 'jpeg', 'png', 'gif');
-
-  if (in_array($fileActualExt, $allowed)) {
-    if ($fileError === 0) {
-      if ($fileSize < 100000) {
-        $fileNameNew = "post_" . uniqid('', true) . "." . $fileActualExt;
-        $fileDestination = '../uploads/upload_post/' . $fileNameNew;
-        move_uploaded_file($fileTmpName, $fileDestination);
-
-        $sql = "INSERT INTO posts (post_title, post_content, post_img, post_category, post_creator, post_date) VALUES ('$post_title', '$post_text', '$fileNameNew', '$post_category', '$post_creator', NOW())";
-        $result = mysqli_query($conn, $sql);
-        if ($result) {
-          header('Location: ./write-posts.php?success=postcreated');
-        }
-      } else {
-        header('Location: ./write-posts.php?error=filesize');
-        exit();
-      }
-    } else {
-      header('Location: ./write-posts.php?error=uploaderr');
-      exit();
-    }
-  } else {
-    header('Location: ./write-posts.php?error=filetype');
-    exit();
-  }
-}
-
-
-
 include "../init/header.php";
 include "../init/sidebar.php";
 
  ?>
+<html>
 
 <div id="write_post">
 
@@ -158,21 +108,23 @@ include "../init/sidebar.php";
 
 <form method="post" action="write-posts.php" enctype="multipart/form-data" id="write_post_form">
 
-  <label for="post_title_input">titel: </label><input type="text" name="post_title" id="post_title_input" /><br />
-  <label for="post_text_input"></label><textarea name="post_text" id="post_text_input" rows="10" cols="40" placeholder="Skriv inlägg..."></textarea> <br />
-  <label for="post_img">bild: </label><input type="file" name="file" id="post_img" /> <br />
+  <label class="label_1" for="post_title_input">titel: </label><input class="input_1" type="text" name="post_title" id="post_title_input" /><br />
+  <label class="label_1" for="post_text_input"></label><textarea class="input_1" name="post_text" id="post_text_input" rows="10" cols="40" placeholder="Skriv inlägg..."></textarea> <br />
+  <div class="fileUpload_post">
+    <label id="replace_btn_img" for="post_img">ladda upp en bild... </label><input type="file" name="file" id="post_img" /><span class="img_explained">du kan ladda upp jpg, png eller gif, max 1mb</span><br />
+  </div>
 
-  <label for="category_selector">kategori: </label>
-    <select name="categories" form="write_post_form">
-      <option value="no_cat">Välj en kategori...</option>
-      <option value="bygdababbel">Bygdababbel</option>
-      <option value="plugg">Plugg</option>
-      <option value="politik">Politik</option>
-      <option value="raggarbilar">Raggarbilar</option>
-      <option value="jippon">Jippon</option>
-      <option value="nyheter">Nyheter</option>
-      <option value="memes">Memes</option>
-      <option value="dagensbild">Dagens bild</option>
+  <label class="label_1" for="category_selector">kategori: </label>
+    <select id="category_selector" name="categories" form="write_post_form">
+      <option value="no_cat">välj en kategori...</option>
+      <option value="bygdababbel">bygdababbel</option>
+      <option value="plugg">plugg</option>
+      <option value="politik">politik</option>
+      <option value="raggarbilar">raggarbilar</option>
+      <option value="jippon">jippon</option>
+      <option value="nyheter">nyheter</option>
+      <option value="memes">memes</option>
+      <option value="dagensbild">dagens bild</option>
     </select><br />
 
   <span id='cancel-submit-container'>
@@ -188,3 +140,25 @@ include "../init/sidebar.php";
 </form>
 
 </div>
+</html>
+<script>
+/*following code is interpreted from jsfiddle (but edited to match needs)*/
+
+var button = document.getElementById('replace_btn_img');
+var input  = document.getElementById('post_img');
+
+// Making input invisible, but leaving shown fo graceful degradation
+input.style.display = 'none';
+
+button.addEventListener('click', function (e) {
+    e.preventDefault();
+    input.click();
+});
+
+input.addEventListener('change', function () {
+  var info = this.value;
+  var imgName = info.slice(12);
+  button.innerText = imgName;
+});
+
+</script>

@@ -136,6 +136,19 @@ require '../init/sidebar.php';
         }
          ?>
       </span>
+      <span>
+        <?php
+        $user = $_GET['username'];
+        $sql = "SELECT admin FROM users WHERE username='$user'";
+        $result = mysqli_query($conn, $sql);
+        $data = $result->fetch_assoc();
+        if (in_array(1, $data)) {
+            echo "/";
+            echo "<span>administratör</span>";
+        }
+
+         ?>
+       </span>
     </div>
   </div>
 

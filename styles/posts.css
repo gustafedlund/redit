@@ -147,7 +147,7 @@ div#write_post form {
   width: 60vw;
   height: 60vh;
 }
-div#write_post label {
+div#write_post label.label_1 {
   font-size: 1.1em;
   width: 30%;
   display: inline-block;
@@ -155,7 +155,7 @@ div#write_post label {
   font-weight: 700;
   margin-left: -5vw;
 }
-div#write_post input {
+div#write_post input.input_1 {
   width: 50%;
   height: 3em;
   border-radius: 5px;
@@ -163,6 +163,37 @@ div#write_post input {
   border: none;
   background-color: #ececec;
 }
+.fileUpload_post {
+  margin-bottom: 10px;
+}
+.fileUpload_post input#post_img {
+  position: absolute;
+  right: 20.2vw;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  z-index: -1;
+}
+#replace_btn_img {
+  background-color: #ececec;
+  height: 3vh;
+  margin-left: 13.7vw;
+  width: 12vw;
+  font-size: 1em;
+  line-height: 3.1vh;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: 700;
+  display: inline-block;
+}
+#replace_btn_img:hover {
+  background-color: rgba(92,144,168,1);
+  color: #ececec;
+}
+  .img_explained {
+    font-size: 0.7em;
+    margin-left: 10px;
+  }
 div#write_post textarea {
   width: 50%;
   height: 15em;
@@ -171,6 +202,25 @@ div#write_post textarea {
   border: none;
   background-color: #ececec;
 }
+/* category dropdown styling */
+  select#category_selector {
+    background-color: #ececec;
+    height: 3vh;
+    width: 12vw;
+    margin-left: 6px;
+    font-size: 1em;
+    line-height: 3.1vh;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 700;
+    display: inline-block;
+    border: none;
+  }
+  select#category_selector:hover {
+    background-color: rgba(92,144,168,1);
+    color: #ececec;
+  }
+/* submit & cancel buttons styling */
 div#write_post #cancel-submit-container  {
   position: absolute;
   bottom: 10%;
@@ -186,7 +236,7 @@ div#write_post #cancel-submit-container  {
 }
 #cancel_container #cancel_caption {
   position: absolute;
-  left: -110px;
+  left: -125px;
   bottom: 20px;
   transition: opacity 0.5s ease-in;
 }
@@ -196,7 +246,7 @@ div#write_post #cancel-submit-container  {
 }
 #submit_container #submit_caption {
   position: absolute;
-  right: -125px;
+  right: -140px;
   bottom: 20px;
   transition: opacity 0.5s ease-in;
 }
@@ -214,6 +264,7 @@ div#write_post #submit_post {
   background-size: contain;
   background-repeat: no-repeat;
   background-color: rgba(0, 0, 0, 0);
+  border: none;
 }
 div#write_post #submit_post:hover {
     background-image: url(../img/submit_bl.png);
