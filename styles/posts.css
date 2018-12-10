@@ -87,9 +87,7 @@ a.post-link {
 .post-info {
   font-size: 0.75em;
   font-weight: 300;
-  position: absolute;
-  left: 2vw;
-  bottom: 1.75vh;
+  clear: both;
   line-height: 1em;
 }
   span.divider {
@@ -114,6 +112,20 @@ a.post-link {
     text-decoration: none;
     color: #000;
   }
+.deletepost_form input {
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  margin: 10px 0;
+  width: 3vw;
+  font-size: 0.8em;
+  height: 1.7em;
+  line-height: 1.5em;
+  border-radius: 5px;
+}
+.deletepost_form input:hover {
+  font-weight: 700;
+}
+
 
 /*/ write posts /*/
 

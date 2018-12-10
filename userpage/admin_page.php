@@ -1,8 +1,35 @@
 <?php
-
 session_start();
 require '../init/config.php';
+require "../init/header.php";
+include '../init/sidebar.php';
+?>
 
+<div id="maincontent" class="admin_page_main">
+
+  <table id='admin_user_list'>
+  <tr>
+  <th>
+    id
+  </th>
+  <th>
+    användarnamn
+  </th>
+  <th>
+    email
+  </th>
+  <th>
+    post permission
+  </th>
+  <th>
+    moderator
+  </th>
+  <th>
+    admin
+  </th>
+  </tr>
+
+<?php
 $query = "SELECT * FROM users";
 $result = mysqli_query($conn, $query);
 
@@ -12,17 +39,45 @@ if (mysqli_num_rows($result) >= 0) {
     $username = $row['username'];
     $email = $row['email'];
     $post_permission = $row['post_permission'];
+    $admin = $row['admin'];
+    $moderator = $row['moderator'];
 
-    echo "User ID: $user_id, Username: $username, Email: $email, Post permission: $post_permission";
-    $_SESSION['user_delete'] = $username;
+    echo "
+    <tr>
+    <td class='center'>
+      $user_id
+    </td>
+    <td>
+      <a class='links' href='../userpage/user.php?username=$username'>$username</a>
+    </td>
+    <td>
+      $email
+    </td>
+    <td class='center'>
+      $post_permission
+    </td>
+    <td class='center'>
+      $moderator
+    </td>
+    <td class='center'>
+    "
     ?>
-    <form method="post" action="delete_user.php">
-      <input type="submit" value="DELETE USER" name="user"><br>
+    <form method="post" action="edit_user.php?mod=<?php echo $username; ?>">
+      <input type="submit" value="<?php echo $admin; ?>" name="user"><br>
     </form>
     <?php
+    echo " </td> <td> ";
+    ?>
+      <form method="post" action="edit_user.php?delete=<?php echo $username; ?>">
+        <input class="last_col" type="submit" value="ta bort användare" name="user"><br>
+      </form>
+    <?php
+    echo "
+    </td>
+    </tr>";
   }
 }
-
 mysqli_close($conn);
-
 ?>
+</table>
+</div>
