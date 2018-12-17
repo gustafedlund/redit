@@ -14,6 +14,7 @@ if (mysqli_num_rows($res) > 0) {
     $content = $rows['post_content'];
     $category = $rows['post_category'];
     $replies = $rows['post_replies'];
+    $image = $rows['post_img'];
     $date = $rows['post_date'];
     $views = $rows['post_views'];
     $likes = $rows['post_likes'];
@@ -22,6 +23,9 @@ if (mysqli_num_rows($res) > 0) {
       $printOp .= "<div class = 'post-left'>";
         $printOp .= "<p class = 'printed-post-title'>$title</p>";
         $printOp .= "<p class = 'printed-post-content'>$content</p>";
+        if ($image != NULL) {
+          $printOp .= "<img src='../posts/uploads/$image' class='post_img' alt='bild till tråden' />";
+        }
       $printOp .= "</div>";
 
     $printOp .= "<div class='post-right'>";
