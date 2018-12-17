@@ -21,7 +21,7 @@ if (mysqli_num_rows($res) > 0) {
     //Pushing HTML into the variable down here
     $printOp .= "<div class = 'printed-post-frame'>";
       $printOp .= "<div class = 'post-left'>";
-        $printOp .= "<p class = 'printed-post-title'>$title</p>";
+        $printOp .= "<h2 class = 'printed-post-title'>$title</h2>";
         $printOp .= "<p class = 'printed-post-content'>$content</p>";
         if ($image != NULL) {
           $printOp .= "<img src='../posts/uploads/$image' class='post_img' alt='bild till tråden' />";
