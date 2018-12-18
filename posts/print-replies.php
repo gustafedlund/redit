@@ -16,7 +16,13 @@ if (mysqli_num_rows($res) > 0) {
     $replies = $rows['post_replies'];
     $date = $rows['post_date'];
     $views = $rows['post_views'];
-    $likes = $rows['post_likes'];
+    //Section for calculating likes on each post and inserting it into post_likes
+    $sqlLikes = "SELECT SUM(like_dislike) AS likes FROM likes WHERE post_id='$pid' ";
+    $resLikes = mysqli_query($conn, $sqlLikes);
+    $rowLikes = mysqli_fetch_assoc($resLikes);
+    $totLikes = $rowLikes['likes'];
+    $sqlLikes2 = mysqli_query($conn, "UPDATE posts SET post_likes='$totLikes' WHERE post_id='$pid' ");
+    $likes = $totLikes;
     //Pushing HTML into the variable down here
     $printOp .= "<div class = 'printed-post-frame'>";
       $printOp .= "<div class = 'post-left'>";
@@ -25,12 +31,10 @@ if (mysqli_num_rows($res) > 0) {
       $printOp .= "</div>";
 
     $printOp .= "<div class='post-right'>";
-        $printOp .= "<span class='upvote'></span>";
-        $printOp .=  "<span class='post_rating printed-post-likes'>$likes</span>";
-        $printOp .= "<span class='downvote'></span>";
-        $printOp .= "<form action='like-parse.php' name='likeform' action='POST'>";
-        $printOp .= "<input type = 'submit' value=$pid name ='like'/>";
-        $printOp .= "<input type = 'submit' value=$pid name ='dislike'/></form>";
+      $printOp .= "<form action='like-parse.php?pid=$pid' name='likeform' method='POST'>";
+      $printOp .= "<input class='upvote' type = 'submit' name ='like'/>";
+      $printOp .=  "<span class='post_rating printed-post-likes'>$likes</span>";
+      $printOp .= "<input class='downvote' type = 'submit' name ='dislike'/></form>";
     $printOp .= "</div>";
 
     $printOp .= "<div class='post-info'>";
@@ -48,9 +52,9 @@ if (mysqli_num_rows($res) > 0) {
 
     //write comment
     $printOp .= "<div class = 'write-comment'>";
-      $printOp .= "<form action='write-comment.php' name='commentform' action='POST'>";
+      $printOp .= "<form action='write-comment.php?pid=$pid' name='commentform' method='POST'>";
         $printOp .= "<input class='write-comment-field' type='text' placeholder='Vad tycker du?' name='comment'>";
-        $printOp .= "<input class='write-comment-submit' type='submit' value='Skicka' name='submit-comment'></form>";
+        $printOp .= "<input class='write-comment-submit' type='submit' name='submit-comment'></form>";
     $printOp .= "</div>";
   }
 }
@@ -74,14 +78,12 @@ if (mysqli_num_rows($res2) > 0) {
           $printReplies .= "<p class='printed-post-content'> $replyContent </p>";
         $printReplies .= "</div>";
 
-    $printReplies .= "<div class='post-right'>";
-        $printReplies .= "<span class='upvote'></span>";
-        $printReplies .=  "<span class='post_rating printed-post-likes'>$replyLikes</span>";
-        $printReplies .= "<span class='downvote'></span>";
-        $printReplies .= "<form action='../posts/xx.php' name='likeform' action='POST'>";
-        $printReplies .= "<input type = 'submit' value=$rid name ='like'/>";
-        $printReplies .= "<input type = 'submit' value=$rid name ='dislike'/></form>";
-    $printReplies .= "</div>";
+        $printReplies .= "<div class='post-right'>";
+          $printReplies .= "<form action='like-parse.php?rid=$rid' name='likeform' method='POST'>";
+          $printReplies .= "<input class='upvote' type = 'submit' name ='like'/>";
+          $printReplies .=  "<span class='post_rating printed-post-likes'>$replyLikes</span>";
+          $printReplies .= "<input class='downvote' type = 'submit' name ='dislike'/></form>";
+        $printReplies .= "</div>";
 
     $printReplies .= "<div class='post-info'>";
       $printReplies .= "<a class='links' href='../userpage/userpage.php?username=$replyCreator' class='author'>$replyCreator</a> <span class='divider'>/</span>";

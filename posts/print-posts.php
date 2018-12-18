@@ -4,26 +4,19 @@ require "../init/config.php";
 
 if ($_GET['category'] == 'bygdababbel') {
   $sql = "SELECT * FROM posts WHERE post_category='bygdababbel' ORDER BY post_date DESC";
-}
-elseif ($_GET['category'] == 'plugg') {
+} elseif ($_GET['category'] == 'plugg') {
   $sql = "SELECT * FROM posts WHERE post_category='plugg' ORDER BY post_date DESC";
-}
-elseif ($_GET['category'] == 'politik') {
+} elseif ($_GET['category'] == 'politik') {
   $sql = "SELECT * FROM posts WHERE post_category='politik' ORDER BY post_date DESC";
-}
-elseif ($_GET['category'] == 'raggarbilar') {
+} elseif ($_GET['category'] == 'raggarbilar') {
   $sql = "SELECT * FROM posts WHERE post_category='raggarbilar' ORDER BY post_date DESC";
-}
-elseif ($_GET['category'] == 'jippon') {
+} elseif ($_GET['category'] == 'jippon') {
   $sql = "SELECT * FROM posts WHERE post_category='jippon' ORDER BY post_date DESC";
-}
-elseif ($_GET['category'] == 'nyheter') {
+} elseif ($_GET['category'] == 'nyheter') {
   $sql = "SELECT * FROM posts WHERE post_category='nyheter' ORDER BY post_date DESC";
-}
-elseif ($_GET['category'] == 'memes') {
+} elseif ($_GET['category'] == 'memes') {
   $sql = "SELECT * FROM posts WHERE post_category='memes' ORDER BY post_date DESC";
-}
-elseif ($_GET['category'] == 'dagensbild') {
+} elseif ($_GET['category'] == 'dagensbild') {
   $sql = "SELECT * FROM posts WHERE post_category='dagensbild' ORDER BY post_date DESC";
 } else {
   $sql = "SELECT * FROM posts ORDER BY post_date DESC";
@@ -68,7 +61,7 @@ if (mysqli_num_rows($res) > 0) {
       $printPosts .= "<div class='post-right'>";
           /*$printPosts .= "<span class='upvote'></span>";*/
           /*$printPosts .= "<span class='downvote'></span>";*/
-          $printPosts .= "<form action='../posts/like-parse.php' name='likeform' action='POST'>";
+          $printPosts .= "<form action='../posts/like-parse.php?pid=$id' name='likeform' method='POST'>";
           $printPosts .= "<input class='upvote' type = 'submit' value=$id name ='like'/>";
           $printPosts .=  "<span class='post_rating printed-post-likes'>$likes</span>";
           $printPosts .= "<input class='downvote' type = 'submit' value=$id name ='dislike'/></form>";
