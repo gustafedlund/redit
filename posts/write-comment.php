@@ -19,7 +19,7 @@ if (isset($_POST['submit-comment'])) {
   $res3 = mysqli_query($conn, $sql3) or die(mysqli_error($conn));
 
   if ($res && $res2) { //If it was successfully posted then
-    header("Location: show-post.php?pid=$pid?comment=posted");
+    header("Location: show-post.php?pid=$pid");
     exit();
 
   } else {

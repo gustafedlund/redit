@@ -118,7 +118,7 @@ if (mysqli_num_rows($res) > 0) {
         $printPosts .= "<span class='date_posted'>$date</span><span class='divider'>/</span>";
 
         if ($_SESSION['admin'] == 1) {
-            $printPosts .= "<form class='deletepost_form' method='post' action='../posts/delete-posts.php?delete=$id'><input type='submit' name='delete' value='ta bort'></input></form>";
+            $printPosts .= "<form class='deletepost_form' method='post' action='../posts/delete-posts.php?delete=$id'><input id='delete' type='submit' name='delete' value='ta bort'></input></form>";
         }
       $printPosts .= "</div>";
 

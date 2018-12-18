@@ -22,9 +22,6 @@ include '../init/sidebar.php';
     post permission
   </th>
   <th>
-    moderator
-  </th>
-  <th>
     admin
   </th>
   </tr>
@@ -40,7 +37,6 @@ if (mysqli_num_rows($result) >= 0) {
     $email = $row['email'];
     $post_permission = $row['post_permission'];
     $admin = $row['admin'];
-    $moderator = $row['moderator'];
 
     echo "
     <tr>
@@ -55,9 +51,6 @@ if (mysqli_num_rows($result) >= 0) {
     </td>
     <td class='center'>
       $post_permission
-    </td>
-    <td class='center'>
-      $moderator
     </td>
     <td class='center'>
     "

@@ -1,5 +1,4 @@
-
- <?php
+<?php
 session_start();
  include "../init/sidebar.php";
  require "../init/header.php";

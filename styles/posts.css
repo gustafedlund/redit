@@ -112,7 +112,7 @@ a.post-link {
     text-decoration: none;
     color: #000;
   }
-.deletepost_form input {
+input#delete {
   background-color: rgba(255, 255, 255, 0.5);
   border: none;
   margin: 10px 0;
@@ -122,10 +122,12 @@ a.post-link {
   line-height: 1.5em;
   border-radius: 5px;
 }
-.deletepost_form input:hover {
+input#delete:hover {
   font-weight: 700;
 }
-
+.delete-comment #delete {
+  width: 8vw;
+}
 
 /*/ write posts /*/
 
@@ -269,7 +271,7 @@ div#write_post #cancel-submit-container  {
 #submit_post:hover + #submit_caption {
   opacity: 1;
 }
-div#write_post #submit_post {
+#submit_post {
   width: 60px;
   height: 50px;
   background-image: url(../img/submit.png);
@@ -278,7 +280,7 @@ div#write_post #submit_post {
   background-color: rgba(0, 0, 0, 0);
   border: none;
 }
-div#write_post #submit_post:hover {
+#submit_post:hover {
     background-image: url(../img/submit_bl.png);
 }
 div#write_post #cancel_post {
@@ -295,21 +297,26 @@ div#write_post #cancel_post {
 div#write_post #cancel_post:hover {
     background-image: url(../img/close_bl.png);
 }
-
 .write-comment {
   margin-top: 5px;
   width: 100%;
   height: 150px;
-  padding-bottom: 25.5px;
-  border: 1px solid rgba(92,144,168,0.2);
-  border-bottom: 6px solid #ececed;
-  background-color: rgba(92,144,168,0.2);
-
 }
 .write-comment-field {
-  height: 100%;
+  height: 100px;
   width: 100%;
+  border: none;
+  background-color: rgba(92,144,168,0.1);
 }
 .write-comment-submit {
   float: right;
+  color: #ececec;
+  border: none;
+  background-color: rgb(92, 144, 168);
+  font-size: 1.2em;
+  border-radius: 5px;
+  padding: 0.5vh 2vw 0.25vh 2vw;
+  margin-right: -1px;
+  cursor: pointer;
+  margin: 10px;
 }

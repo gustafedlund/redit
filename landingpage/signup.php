@@ -58,7 +58,7 @@ require "../init/header.php";
 
   <label>e-mail: </label><input class="signup_form_input" type="email" name="mail" /> <br />
 
-  <input id="signup_button" type="submit" name="signup_submit" value="Skapa användare!" />
+  <input id="login_button" type="submit" name="signup_submit" value="" />
 
 </form>
 

@@ -149,7 +149,7 @@ require '../init/sidebar.php';
             $id = $rows['post_id'];
 
               $query2 = "SELECT post_title FROM posts WHERE post_id='$id'";
-              $result2 = mysqli_query($query2);
+              $result2 = mysqli_query($conn, $query2);
 
                 if (mysqli_num_rows($result2) > 0) {
                   while ($rows2 = mysqli_fetch_assoc($result2)) {

@@ -69,7 +69,7 @@ div#maincontent_login {
       border: none;
       background-color: #ececec;
     }
-    div#login_form input#login_button {
+    input#login_button {
       width: 120px;
       height: 40px;
       border: none;
@@ -80,9 +80,7 @@ div#maincontent_login {
       background-position: right;
       margin-top: 100px;
     }
-      div#login_form input#login_button:hover {
 
-      }
     a#createuser_link {
       color: #ececec;
       text-decoration: none;

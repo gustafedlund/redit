@@ -49,7 +49,7 @@ if (mysqli_num_rows($res) > 0) {
     $printOp .= "<span class='date_posted'>$date</span><span class='divider'>/</span>";
 
     if ($_SESSION['admin'] == 1) {
-        $printReplies .= "<form method='post' action='../posts/delete-posts.php'><input type='submit' name='delete' value='Delete post'></input></form>";
+        $printReplies .= "<form method='post' action='../posts/delete-posts.php'><input id='delete' type='submit' name='delete' value='Ta bort kommentar'></input></form>";
     }
     $printOp .= "</div>";
   $printOp .= "</div>";
@@ -57,8 +57,8 @@ if (mysqli_num_rows($res) > 0) {
     //write comment
     $printOp .= "<div class = 'write-comment'>";
       $printOp .= "<form action='write-comment.php?pid=$pid' name='commentform' method='POST'>";
-        $printOp .= "<input class='write-comment-field' type='text' placeholder='Vad tycker du?' name='comment'>";
-        $printOp .= "<input class='write-comment-submit' type='submit' name='submit-comment'></form>";
+        $printOp .= "<textarea class='write-comment-field' type='text' cols='40' rows='20' placeholder='vad tycker du?' name='comment'></textarea>";
+        $printOp .= "<input class='write-comment-submit' type='submit' name='submit-comment' value='skicka in kommentar!'></form>";
     $printOp .= "</div>";
   }
 }
@@ -100,7 +100,7 @@ if (mysqli_num_rows($res2) > 0) {
       $printReplies .= "<span class='date_posted'>$replyDate</span><span class='divider'>/</span>";
 
       if ($_SESSION['admin'] == 1) {
-          $printReplies .= "<form method='post' action='../posts/delete-posts.php'><input type='submit' name='delete' value='Delete post'></input></form>";
+          $printReplies .= "<form class='delete-comment' method='post' action='../posts/delete-posts.php?rid=$rid'><input id='delete' type='submit' name='delete' value='Ta bort kommentar'></input></form>";
       }
     $printReplies .= "</div>";
 

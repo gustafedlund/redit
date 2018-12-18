@@ -1,4 +1,5 @@
 <?php
+  session_start();
   require "../init/config.php";
   require "../init/header.php";
   include "../posts/print-posts.php";
