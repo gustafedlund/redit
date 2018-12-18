@@ -1,8 +1,9 @@
 <?php
-
-require "../init/config.php";
-
 session_start();
+if ($_SESSION['loggedin'] !== TRUE) {
+  header('Location: ../landingpage/login.php');
+}
+require "../init/config.php";
 
 if (isset($_POST['post_submit'])) {
 
@@ -121,15 +122,22 @@ include "../init/sidebar.php";
   <label class="label_1" for="category_selector">kategori: </label>
     <select id="category_selector" name="categories" form="write_post_form">
       <option value="no_cat">välj en kategori...</option>
-      <option value="bygdababbel">bygdababbel</option>
-      <option value="plugg">plugg</option>
-      <option value="politik">politik</option>
-      <option value="raggarbilar">raggarbilar</option>
-      <option value="jippon">jippon</option>
-      <option value="nyheter">nyheter</option>
-      <option value="memes">memes</option>
-      <option value="dagensbild">dagens bild</option>
-    </select><br />
+      <?php
+        $sql3 = "SELECT * FROM categories";
+        $result3 = mysqli_query($conn, $sql3);
+        if(mysqli_num_rows($result3) > 0) {
+          while ($rows = mysqli_fetch_assoc($result3)) {
+            $category = $rows['category'];
+            echo "<option value='$category'>$category</option>";
+          }
+        }
+        echo "</select>";
+        if ($_SESSION['admin'] == 1) {
+          echo "<a href='../userpage/admin_page.php' id='edit_categories' class='links'>redigera kategorier</a>";
+        }
+       ?>
+
+    <br />
 
   <span id='cancel-submit-container'>
     <span id="cancel_container">

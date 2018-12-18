@@ -1,13 +1,20 @@
 <?php
 session_start();
+if ($_SESSION['loggedin'] !== TRUE) {
+  header('Location: ../landingpage/login.php');
+}
+if ($_SESSION['admin'] !== 1) {
+  header('Location: ../home/index.php');
+}
 require '../init/config.php';
 require "../init/header.php";
 include '../init/sidebar.php';
 ?>
 
 <div id="maincontent" class="admin_page_main">
+<div id="admin_users">
 
-  <table id='admin_user_list'>
+  <table class='admin_list'>
   <tr>
   <th>
     id
@@ -68,9 +75,53 @@ if (mysqli_num_rows($result) >= 0) {
     echo "
     </td>
     </tr>";
+    }
   }
-}
-mysqli_close($conn);
-?>
+  ?>
 </table>
+</div>
+
+<div id="admin_reports">
+
+</div>
+<div id="admin_categories">
+  <table class='admin_list'>
+  <tr>
+  <th>
+    id
+  </th>
+  <th>
+    kategori
+  </th>
+  </tr>
+  <?php
+    $sql3 = "SELECT * FROM categories";
+    $result3 = mysqli_query($conn, $sql3);
+    if(mysqli_num_rows($result3) > 0) {
+      while ($rows = mysqli_fetch_assoc($result3)) {
+        $cat_id = $rows['cat_id'];
+        $category = $rows['category'];
+        echo "<tr>
+        <td>
+        $cat_id
+        </td>
+        <td>
+        $category
+        </td>
+        <td>
+        <form method='post' action='../posts/edit_categories.php?delete=$category'>
+          <input class='delete_cat' type='submit' name='remove_cat' value='ta bort kategori' />
+        </form>
+        </td>
+        </tr>";
+      }
+      echo "</table>";
+    }
+    echo "<form id='new_cat' method='post' action='../posts/edit_categories.php?add=category'>
+      <input type='text' id='new_cat_text' name='new_cat' placeholder='ny kategori...'/>
+      <input type='submit' id='new_cat_submit' class='add_cat' name='add_cat' value='lägg till kategori' />
+    </form>";
+   ?>
+</div>
+
 </div>

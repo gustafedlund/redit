@@ -216,6 +216,9 @@ div#write_post textarea {
   border: none;
   background-color: #ececec;
 }
+#edit_categories {
+  margin-left: 15px;
+}
 /* category dropdown styling */
   select#category_selector {
     background-color: #ececec;

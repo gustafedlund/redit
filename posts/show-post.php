@@ -1,5 +1,8 @@
 <?php
-session_start();
+  session_start();
+  if ($_SESSION['loggedin'] !== TRUE) {
+    header('Location: ../landingpage/login.php');
+  }
  include "../init/sidebar.php";
  require "../init/header.php";
  include "print-replies.php";

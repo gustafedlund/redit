@@ -56,15 +56,29 @@ body {
     width: 40%;
     margin-left: 25%;
   }
+  #sidebar_stuff {
+    margin-top: 2vh;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
   #sidebar a.category {
     color: #ececec;
     text-decoration: none;
     display: block;
+    width: 120%;
     font-size: 1em;
-    line-height: 8vh;
+    margin-left: -2.5vh;
+    padding-left: 2.5vh;
   }
   #sidebar a.category:hover {
     font-weight: 700;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  #sidebar .current_cat {
+    font-weight: 700;
+    background-color: rgba(255, 255, 255, 0.1);
   }
     #sidebar #char-indicator {
       position: fixed;
@@ -130,10 +144,13 @@ div#left-side {
   #sort {
     margin-top: -15px;
     padding-left: 20%;
-    width: 30em;
+    min-width: 30em;
     height: 2.1em;
     transform: rotate(90deg);
     transform-origin: 8.4% -25%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
   }
     #sort button {
       color: #ececec;
@@ -171,29 +188,50 @@ div#left-side {
   background-color: rgba(92, 144, 168, 0.5);
   padding: 0;
 }
-#admin_user_list {
+.admin_list {
   width: 102%;
   margin: 0 -2px;
 }
-#admin_user_list tr:nth-child(even) {
+.admin_list tr:nth-child(even) {
   background-color: rgba(255,255,255,0.4);
 }
-#admin_user_list td,
-#admin_user_list th {
+.admin_list td,
+.admin_list th {
   font-size: 0.8em;
   height: 2em;
   padding: 0.2em;
   padding-left: 0.4em;
 }
-#admin_user_list input {
+.admin_list input {
   background-color: rgba(255, 255, 255, 0);
   border: none;
   font-size: 1em;
 }
-#admin_user_list input:hover {
+.admin_list input:hover {
  font-weight: 700;
  padding: 0.1em 0.3em;
 }
-#admin_user_list input.last_col {
+.admin_list input.last_col {
   margin-right: -20px;
+}
+#admin_categories {
+  width: 45%;
+}
+#new_cat_text {
+  background-color: rgba(255, 255, 255, 0.7);
+  border: none;
+  width: 68%;
+  float:left;
+  height: 20px;
+}
+#new_cat_submit {
+  width: 30%;
+  float: right;
+  background-color: #fff;
+  border: none;
+  border-radius: 5px;
+  color: rgb(92, 144, 168);
+  font-weight: 700;
+  font-size: 0.8em;
+  height: 20px;
 }
