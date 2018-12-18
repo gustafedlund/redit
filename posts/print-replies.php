@@ -42,7 +42,7 @@ if (mysqli_num_rows($res) > 0) {
     $printOp .= "</div>";
 
     $printOp .= "<div class='post-info'>";
-      $printOp .= "<a href='xx.php' class='links'> $category </a> <span class='divider'>/</span>";
+      $printOp .= "<a href='../home/index.php?category=$category' class='links'> $category </a> <span class='divider'>/</span>";
       $printOp .= "<span class='no_of_comments'> $replies </span><span class='comment_symbol'></span> <span class='divider'>/</span>";
       $printOp .= "<span class='no_of_views'> $views </span><span class='view_symbol'></span> <span class='divider'>/</span>";
       $printOp .= "<a class='links' href='../userpage/userpage.php?username=$creator' class='author'>$creator</a> <span class='divider'>/</span>";
