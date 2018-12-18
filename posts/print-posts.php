@@ -3,23 +3,66 @@ session_start();
 require "../init/config.php";
 
 if ($_GET['category'] == 'bygdababbel') {
-  $sql = "SELECT * FROM posts WHERE post_category='bygdababbel' ORDER BY post_date DESC";
-} elseif ($_GET['category'] == 'plugg') {
-  $sql = "SELECT * FROM posts WHERE post_category='plugg' ORDER BY post_date DESC";
-} elseif ($_GET['category'] == 'politik') {
-  $sql = "SELECT * FROM posts WHERE post_category='politik' ORDER BY post_date DESC";
-} elseif ($_GET['category'] == 'raggarbilar') {
-  $sql = "SELECT * FROM posts WHERE post_category='raggarbilar' ORDER BY post_date DESC";
-} elseif ($_GET['category'] == 'jippon') {
-  $sql = "SELECT * FROM posts WHERE post_category='jippon' ORDER BY post_date DESC";
-} elseif ($_GET['category'] == 'nyheter') {
-  $sql = "SELECT * FROM posts WHERE post_category='nyheter' ORDER BY post_date DESC";
-} elseif ($_GET['category'] == 'memes') {
-  $sql = "SELECT * FROM posts WHERE post_category='memes' ORDER BY post_date DESC";
-} elseif ($_GET['category'] == 'dagensbild') {
-  $sql = "SELECT * FROM posts WHERE post_category='dagensbild' ORDER BY post_date DESC";
+  if ($_GET['sort'] == 'popular') {
+    $sql = "SELECT * FROM posts WHERE post_category='bygdababbel' ORDER BY post_likes DESC";
+  } else {
+    $sql = "SELECT * FROM posts WHERE post_category='bygdababbel' ORDER BY post_date DESC";
+  }
+}
+elseif ($_GET['category'] == 'plugg') {
+  if ($_GET['sort'] == 'popular') {
+    $sql = "SELECT * FROM posts WHERE post_category='plugg' ORDER BY post_likes DESC";
+  } else {
+    $sql = "SELECT * FROM posts WHERE post_category='plugg' ORDER BY post_date DESC";
+  }
+}
+elseif ($_GET['category'] == 'politik') {
+  if ($_GET['sort'] == 'popular') {
+    $sql = "SELECT * FROM posts WHERE post_category='politik' ORDER BY post_likes DESC";
+  } else {
+    $sql = "SELECT * FROM posts WHERE post_category='politik' ORDER BY post_date DESC";
+  }
+}
+elseif ($_GET['category'] == 'raggarbilar') {
+  if ($_GET['sort'] == 'popular') {
+    $sql = "SELECT * FROM posts WHERE post_category='raggarbilar' ORDER BY post_likes DESC";
+  } else {
+    $sql = "SELECT * FROM posts WHERE post_category='raggarbilar' ORDER BY post_date DESC";
+  }
+}
+elseif ($_GET['category'] == 'jippon') {
+  if ($_GET['sort'] == 'popular') {
+    $sql = "SELECT * FROM posts WHERE post_category='jippon' ORDER BY post_likes DESC";
+  } else {
+    $sql = "SELECT * FROM posts WHERE post_category='jippon' ORDER BY post_date DESC";
+  }
+}
+elseif ($_GET['category'] == 'nyheter') {
+  if ($_GET['sort'] == 'popular') {
+    $sql = "SELECT * FROM posts WHERE post_category='nyheter' ORDER BY post_likes DESC";
+  } else {
+    $sql = "SELECT * FROM posts WHERE post_category='nyheter' ORDER BY post_date DESC";
+  }
+}
+elseif ($_GET['category'] == 'memes') {
+  if ($_GET['sort'] == 'popular') {
+    $sql = "SELECT * FROM posts WHERE post_category='memes' ORDER BY post_likes DESC";
+  } else {
+    $sql = "SELECT * FROM posts WHERE post_category='memes' ORDER BY post_date DESC";
+  }
+}
+elseif ($_GET['category'] == 'dagensbild') {
+  if ($_GET['sort'] == 'popular') {
+    $sql = "SELECT * FROM posts WHERE post_category='dagensbild' ORDER BY post_likes DESC";
+  } else {
+    $sql = "SELECT * FROM posts WHERE post_category='dagensbild' ORDER BY post_date DESC";
+  }
 } else {
-  $sql = "SELECT * FROM posts ORDER BY post_date DESC";
+  if ($_GET['sort'] == 'popular' && !isset($_GET['category'])) {
+    $sql = "SELECT * FROM posts ORDER BY post_likes DESC";
+  } else {
+    $sql = "SELECT * FROM posts ORDER BY post_date DESC";
+  }
 }
 
 $res = mysqli_query($conn, $sql) or die(mysqli_error($conn));

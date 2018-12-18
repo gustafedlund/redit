@@ -18,12 +18,41 @@
 
   <div id='left-side'>
     <div id='sort'>
-      <button id='sort_popular'>
-        hetaste
-      </button>
-      <button id='sort_newest'>
-        senaste
-      </button>
+      <a href="
+      <?php
+        $current = $_SERVER['REQUEST_URI'];
+        if (strpos($current, "?sort=popular") !== false) { //if sort is on popular
+          $urlArr = explode("?", $current); //remove sort and go back to start(chronological)
+          echo $urlArr[0];
+        } elseif (strpos($current, "&sort=popular") !== false) { //if sort is on popular
+          $urlArr = explode("&", $current); //remove sort and go back to start(chronological)
+          echo $urlArr[0];
+        } else {
+          echo $current;
+        }
+      ?>
+      ">
+        <button id='sort_newest'>
+          senaste
+        </button></a>
+        <a href="
+        <?php
+          $current = $_SERVER['REQUEST_URI'];
+          if (strpos($current, "sort=popular") !== false) {
+            echo "";
+          } elseif (strpos($current, "?") == false) {
+            echo $current . "?sort=popular";
+          } elseif (strpos($current, "&sort=popular") !== false) {
+            echo $current;
+          } else {
+            echo $current . "&sort=popular";
+          }
+        ?>
+        ">
+        <button id='sort_popular'>
+          hetaste
+        </button>
+      </a>
       <?php
         if ($_SESSION['admin'] == 1) {
           echo "<a href='../userpage/admin_page.php'><button id='admin_panel'>administrera</button></a>";
