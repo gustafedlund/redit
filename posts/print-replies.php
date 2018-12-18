@@ -74,7 +74,13 @@ if (mysqli_num_rows($res2) > 0) {
     $replyCreator = $rows2['reply_creator'];
     $replyContent = $rows2['reply_content'];
     $replyDate = $rows2['reply_date'];
-    $replyLikes = $rows2['reply_likes'];
+    //Sum array of total likes on this comment
+    $sqlLikes3 = "SELECT SUM(like_dislike) AS likes FROM likes WHERE reply_id='$rid' ";
+    $resLikes2 = mysqli_query($conn, $sqlLikes3);
+    $rowLikes2 = mysqli_fetch_assoc($resLikes2);
+    $totLikes2 = $rowLikes2['likes'];
+    $sqlLikes4 = mysqli_query($conn, "UPDATE replies SET reply_likes='$totLikes2' WHERE reply_id='$rid' ");
+    $replyLikes = $totLikes2;
 
     $printReplies .= "<div class = 'printed-post-frame'>";
 

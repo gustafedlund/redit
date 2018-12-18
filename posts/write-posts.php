@@ -60,6 +60,10 @@ if (isset($_POST['post_submit'])) {
 
     if(mysqli_query($conn, $sql)) {
       header("Location: ./write-posts.php?success=postcreated");
+      //Also automatically like your own post when posted.
+      $pid = mysqli_insert_id($conn);
+      $sql2 = "INSERT INTO likes (post_id, username, like_dislike) VALUES ('$pid', '$post_creator', '1')";
+      $res2 = mysqli_query($conn, $sql2) or die(mysqli_error($conn));
       exit();
     } else {
       header("Location: ./write-posts.php?error=notposted");

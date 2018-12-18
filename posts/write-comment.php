@@ -10,8 +10,12 @@ if (isset($_POST['submit-comment'])) {
 
   $sql = "INSERT INTO replies (post_id, reply_creator, reply_content, reply_date) VALUES ('$pid', '$user', '$content', now())";
   $res = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+  $rid = mysqli_insert_id($conn);
+  //Automatically like your posted comment.
+  $sql2 = "INSERT INTO likes (reply_id, username, like_dislike) VALUES ('$rid', '$user', '1')";
+  $res2 = mysqli_query($conn, $sql2) or die(mysqli_error($conn));
 
-  if ($res) { //If it was successfully posted then
+  if ($res && $res2) { //If it was successfully posted then
     header("Location: show-post.php?pid=$pid?comment=posted");
     exit();
 
