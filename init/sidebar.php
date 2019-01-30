@@ -20,7 +20,7 @@
       }
     ?>
 
-    <form method="post" action="search-parse.php">
+    <form method="post" action="../search/search-parse.php">
       <input type="text" name="search" id="search-field"/>
       <label for="submit-search"><img src="../img/search.png" id="search-symbol"/></label><input type="submit" name="submit-search" id="submit-search" />
     </form>
