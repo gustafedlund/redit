@@ -21,10 +21,9 @@
     ?>
 
     <form method="post" action="search-parse.php">
-      <input type="text" name="search" />
-      <input type="submit" name="submit-search" />
+      <input type="text" name="search" id="search-field"/>
+      <label for="submit-search"><img src="../img/search.png" id="search-symbol"/></label><input type="submit" name="submit-search" id="submit-search" />
     </form>
-    
   </span>
 
   <div id='char-indicator'>
