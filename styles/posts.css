@@ -89,6 +89,8 @@ a.post-link {
   font-weight: 300;
   clear: both;
   line-height: 1em;
+  position: absolute;
+  bottom: 0;
 }
   span.divider {
     padding: 0 0.25em;
@@ -111,6 +113,9 @@ a.post-link {
   a.author {
     text-decoration: none;
     color: #000;
+  }
+  form#admin_deletepost {
+    display: inline;
   }
 input#delete {
   background-color: rgba(255, 255, 255, 0.5);
