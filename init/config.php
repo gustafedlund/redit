@@ -13,4 +13,12 @@ if(!$conn) {
 
 date_default_timezone_set("Europe/Stockholm");
 
+if(isset($_SESSION['user_ip']) === false) {
+  $_SESSION['user_ip'] = $_SERVER['REMOTE_ADDR'];
+}
+if($_SESSION['user_ip'] !== $_SERVER['REMOTE_ADDR']) {
+  session_unset();
+  session_destroy();
+}
+
 ?>
