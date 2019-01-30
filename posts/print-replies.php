@@ -45,11 +45,11 @@ if (mysqli_num_rows($res) > 0) {
       $printOp .= "<a href='../home/index.php?category=$category' class='links'> $category </a> <span class='divider'>/</span>";
       $printOp .= "<span class='no_of_comments'> $replies </span><span class='comment_symbol'></span> <span class='divider'>/</span>";
       $printOp .= "<span class='no_of_views'> $views </span><span class='view_symbol'></span> <span class='divider'>/</span>";
-      $printOp .= "<a class='links' href='../userpage/userpage.php?username=$creator' class='author'>$creator</a> <span class='divider'>/</span>";
+      $printOp .= "<a class='links' href='../userpage/user.php?username=$creator' class='author'>$creator</a> <span class='divider'>/</span>";
     $printOp .= "<span class='date_posted'>$date</span><span class='divider'>/</span>";
 
     if ($_SESSION['admin'] == 1) {
-        $printReplies .= "<form method='post' action='../posts/delete-posts.php'><input id='delete' type='submit' name='delete' value='Ta bort kommentar'></input></form>";
+        $printReplies .= "<form method='post' action='../posts/delete-posts.php' id='admin_deletepost'><input id='delete' type='submit' name='delete' value='Ta bort'></input></form>";
     }
     $printOp .= "</div>";
   $printOp .= "</div>";
@@ -96,11 +96,11 @@ if (mysqli_num_rows($res2) > 0) {
         $printReplies .= "</div>";
 
     $printReplies .= "<div class='post-info'>";
-      $printReplies .= "<a class='links' href='../userpage/userpage.php?username=$replyCreator' class='author'>$replyCreator</a> <span class='divider'>/</span>";
+      $printReplies .= "<a class='links' href='../userpage/user.php?username=$replyCreator' class='author'>$replyCreator</a> <span class='divider'>/</span>";
       $printReplies .= "<span class='date_posted'>$replyDate</span><span class='divider'>/</span>";
 
       if ($_SESSION['admin'] == 1) {
-          $printReplies .= "<form class='delete-comment' method='post' action='../posts/delete-posts.php?rid=$rid'><input id='delete' type='submit' name='delete' value='Ta bort kommentar'></input></form>";
+          $printReplies .= "<form class='delete-comment' method='post' action='../posts/delete-posts.php?rid=$rid' id='admin_deletepost'><input id='delete' type='submit' name='delete' value='Ta bort kommentar'></input></form>";
       }
     $printReplies .= "</div>";
 
