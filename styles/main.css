@@ -144,13 +144,14 @@ div#left-side {
   #sort {
     margin-top: -15px;
     padding-left: 20%;
-    min-width: 30em;
+    min-width: 19em;
     height: 2.1em;
     transform: rotate(90deg);
     transform-origin: 8.4% -25%;
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
+    margin-left: 15px;
   }
     #sort button {
       color: #ececec;
@@ -160,6 +161,7 @@ div#left-side {
       border-top-right-radius: 0.5em;
       border-top-left-radius: 0.5em;
       padding: 0.5vh 2vw 0.25vh 2vw;
+      margin: 0 5px;
     }
     #sort button:hover {
       font-weight: 700;
