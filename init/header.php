@@ -1,7 +1,7 @@
 <?php
 
 if(isset($_SESSION['user_ip']) === false) {
-  $_SESSION['last_ip'] = $_SERVER['REMOTE_ADDR'];
+  $_SESSION['user_ip'] = $_SERVER['REMOTE_ADDR'];
 }
 if($_SESSION['user_ip'] !== $_SERVER['REMOTE_ADDR']) {
   session_unset();
