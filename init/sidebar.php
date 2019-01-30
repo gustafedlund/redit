@@ -19,6 +19,12 @@
         }
       }
     ?>
+
+    <form method="post" action="search-parse.php">
+      <input type="text" name="search" />
+      <input type="submit" name="submit-search" />
+    </form>
+    
   </span>
 
   <div id='char-indicator'>
