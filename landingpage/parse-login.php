@@ -52,6 +52,15 @@ if (isset($_POST['login_submit'])) { //did the user access this page by clicking
             $_SESSION['admin'] = $row['admin'];
             $_SESSION['loggedin'] = TRUE;
 
+            if ($_POST['remember']) {
+              setcookie('remember_user', $row['username'], time() + 3600000);
+              setcookie('remember_password', $pwd, time() + 3600000);
+            } elseif (!$_POST['remember']) {
+              if (isset($_COOKIE['remember_user']) || isset($_COOKIE['remember_password'])) {
+                setcookie('remember_user', 'do_not_remember', time() - 3600);
+                setcookie('remember_password', 'do_not_remember', time() - 3600);
+              }
+            }
 
             header("Location: ../home/index.php?login=success");
             exit();

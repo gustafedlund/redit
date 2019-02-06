@@ -38,13 +38,20 @@
       }
     }
 
+
      ?>
 
   </span>
 
-  <label>användarnamn: </label><input class="login_form_input" type="text" name="input_username" /><br />
+  <label>användarnamn: </label><input class="login_form_input" type="text" name="input_username"
+  value="<?php if (isset($_COOKIE['remember_user']) && $_COOKIE['remember_user'] != 'do_not_remember') {
+    echo $_COOKIE['remember_user']; }?>" /><br />
 
-  <label>lösenord: </label><input class="login_form_input" type="password" name="input_password" /><br />
+  <label>lösenord: </label><input class="login_form_input" type="password" name="input_password"
+  value="<?php if (isset($_COOKIE['remember_password']) && $_COOKIE['remember_password'] != 'do_not_remember') {
+    echo $_COOKIE['remember_password']; }?>" /><br />
+
+  <label>Kom ihåg mig </label><input type="checkbox" name="remember" value="1" /><br />
 
   <a href="signup.php" id="createuser_link">
     har du inget konto än? skapa ett nu!
