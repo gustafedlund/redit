@@ -8,7 +8,8 @@ require "../init/config.php";
 if (isset($_POST['post_submit'])) {
 
   $post_title = $_POST['post_title'];
-  $post_text = $_POST['post_text'];
+  //code from stackoverflow to make the text keep spading and formatting upon input:
+  $post_text = nl2br(str_replace('  ', ' &nbsp;', htmlspecialchars($_POST['post_text'])));
   $post_category = $_POST['categories'];
   $post_creator = $_SESSION['username'];
   $fileNameNew = NULL;
@@ -51,7 +52,7 @@ if (isset($_POST['post_submit'])) {
     header("Location: ./write-posts.php?error=emptyfields");
     exit(); //if user makes a mistake, this stops code from running
   }
-  elseif (!preg_match("/^[A-Za-zåäöÅÄÖ 0-9]*$/", $post_title) && !preg_match("/^[A-Za-z åäö ÅÄÖ 0-9]*$/", $post_text)) {
+  elseif (!preg_match("/^[A-Za-z åäö ÅÄÖ 0-9!.,:;)('^*?@]*$/", $post_title) && !preg_match("/^[A-Za-z åäö ÅÄÖ 0-9!.,:;)('^*?@]*$/", $post_text)) {
     header("Location: ./write-posts.php?error=forbiddenchars");
     exit();
   }

@@ -8,8 +8,10 @@ if ($_SESSION['admin'] !== 1) {
 if($_GET['delete']) {
   $category = $_GET['delete'];
   $query = "DELETE FROM categories WHERE category = '$category'";
+  $query2 = "UPDATE posts SET post_category='okategoriserad' WHERE post_category='$category'";
   $result = mysqli_query($conn, $query);
-  if ($result) {
+  $result2 = mysqli_query($conn, $query2);
+  if ($result && $result2) {
     header("Location: ../userpage/admin_page.php?catdeleted=" . $category . "");
   }
 } elseif ($_GET['add']) {

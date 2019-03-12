@@ -129,9 +129,10 @@ require '../init/sidebar.php';
         while ($rows = mysqli_fetch_assoc($result)) {
           $title = $rows['post_title'];
           $date = $rows['post_date'];
+          $pid = $rows['post_id'];
 
           echo "<p class='list_of_posts'>
-            $title / $date
+            <a href='../posts/show-post.php?pid=$pid' class='userpage_postlink'>$title / $date</a>
           </p>";
         }
       }
@@ -149,16 +150,17 @@ require '../init/sidebar.php';
           while ($rows = mysqli_fetch_assoc($result)) {
             $id = $rows['post_id'];
 
-              $query2 = "SELECT post_title FROM posts WHERE post_id='$id'";
+              $query2 = "SELECT * FROM posts WHERE post_id='$id'";
               $result2 = mysqli_query($conn, $query2);
 
                 if (mysqli_num_rows($result2) > 0) {
                   while ($rows2 = mysqli_fetch_assoc($result2)) {
                     $title = $rows2['post_title'];
+                    $pid = $rows2['post_id'];
 
                     echo "<p class='list_of_posts'>
-                      $title
-                    </p>";
+                        <a href='../posts/show-post.php?pid=$pid' class='userpage_postlink'>$title / $date</a>
+                      </p>";
                   }
                 }
               }
@@ -168,9 +170,9 @@ require '../init/sidebar.php';
     </span>
 
     <div class="userpage_bottom">
-      <!--<span class="member_since">
+      <span class="member_since">
         medlem sedan
-        
+        <?php
           $user = $_SESSION['username'];
           $sql = "SELECT member_since FROM users WHERE username='$user'";
           $result = mysqli_query($conn, $sql);
@@ -178,9 +180,9 @@ require '../init/sidebar.php';
             $data = $result->fetch_assoc();
             echo $data['member_since'];
           }
-
+          ?>
       </span>
-       /-->
+       /
       <span class="redighet"> <!-- likes från kommentarer? kanske att de ger +0.1 eller så? -->
         redighet:
         <?php

@@ -6,7 +6,10 @@ if(isset($_GET['delete'])) {
   $post_id = $_GET['delete'];
   $query = "DELETE FROM posts WHERE post_id = '$post_id'";
   $result = mysqli_query($conn, $query);
-  if ($result) {
+
+  $query2 = "DELETE FROM replies WHERE post_id = '$post_id'";
+  $result2 = mysqli_query($conn, $query2);
+  if ($result && $result2) {
     header("Location: ../home/index.php?postdeleted=" . $post_id . "");
   }
 }
