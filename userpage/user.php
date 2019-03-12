@@ -108,9 +108,9 @@ require '../init/sidebar.php';
     </span>
 
     <div class="userpage_bottom">
-      <span class="member_since">
+    <!--  <span class="member_since">
         medlem sedan
-        <?php
+        
           $user = $_GET['username'];
           $sql = "SELECT member_since FROM users WHERE username='$user'";
           $result = mysqli_query($conn, $sql);
@@ -118,9 +118,9 @@ require '../init/sidebar.php';
             $data = $result->fetch_assoc();
             echo $data['member_since'];
           }
-        ?>
+
       </span>
-       /
+       / -->
       <span class="redighet"> <!-- likes från kommentarer? kanske att de ger +0.1 eller så? -->
         redighet:
         <?php

@@ -49,7 +49,7 @@ if (mysqli_num_rows($res) > 0) {
     $printOp .= "<span class='date_posted'>$date</span><span class='divider'>/</span>";
 
     if ($_SESSION['admin'] == 1) {
-        $printReplies .= "<form method='post' action='../posts/delete-posts.php' id='admin_deletepost'><input id='delete' type='submit' name='delete' value='Ta bort'></input></form>";
+        $printReplies .= "<form method='post' action='../posts/delete-posts.php?rid=$rid' id='admin_deletepost'><input id='delete' type='submit' name='delete' value='Ta bort'></input></form>";
     }
     $printOp .= "</div>";
   $printOp .= "</div>";
@@ -100,7 +100,7 @@ if (mysqli_num_rows($res2) > 0) {
       $printReplies .= "<span class='date_posted'>$replyDate</span><span class='divider'>/</span>";
 
       if ($_SESSION['admin'] == 1) {
-          $printReplies .= "<form class='delete-comment' method='post' action='../posts/delete-posts.php?rid=$rid' id='admin_deletepost'><input id='delete' type='submit' name='delete' value='Ta bort kommentar'></input></form>";
+          $printReplies .= "<form class='delete-comment' method='post' action='../posts/delete-posts.php?rid=$rid&pid=$pid' id='admin_deletepost'><input id='delete' type='submit' name='delete' value='Ta bort kommentar'></input></form>";
       }
     $printReplies .= "</div>";
 

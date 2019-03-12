@@ -74,7 +74,7 @@ if (mysqli_num_rows($res) > 0) {
     $id = $rows['post_id'];
     $title = $rows['post_title'];
     $category = $rows['post_category'];
-      $category_link = "../home/index.php?category=$category";
+    $category_link = "../home/index.php?category=$category";
     $creator = $rows['post_creator'];
     $content = $rows['post_content'];
     $image = $rows['post_img'];

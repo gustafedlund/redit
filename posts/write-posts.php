@@ -57,13 +57,13 @@ if (isset($_POST['post_submit'])) {
   }
 
   if (!empty($_POST['post_title'])  && !empty($_POST['post_text'])) {
-    $sql = "INSERT INTO posts (post_title, post_content, post_img, post_category, post_creator, post_date) VALUES ('$post_title', '$post_text', '$fileNameNew', '$post_category', '$post_creator', NOW())";
+    $sql = "INSERT INTO posts (post_title, post_content, post_img, post_category, post_creator, post_date, post_replies) VALUES ('$post_title', '$post_text', '$fileNameNew', '$post_category', '$post_creator', NOW(), 0)";
 
     if(mysqli_query($conn, $sql)) {
       header("Location: ./write-posts.php?success=postcreated");
       //Also automatically like your own post when posted.
       $pid = mysqli_insert_id($conn);
-      $sql2 = "INSERT INTO likes (post_id, username, like_dislike) VALUES ('$pid', '$post_creator', '1')";
+      $sql2 = "INSERT INTO likes (post_id, username, like_dislike) VALUES ('$pid', '$post_creator', 1)";
       $res2 = mysqli_query($conn, $sql2) or die(mysqli_error($conn));
       exit();
     } else {
