@@ -3,7 +3,7 @@ session_start();
 require "../init/config.php";
 
 //URI category=x, sort=y : no sort = sort by latest, sort = sort by post rating
-$currentCategory = $_GET['category'];
+$currentCategory = $_GET['category']; //GETS CATEGORY THROUGH 'GET', THIS WAY THE SORTING WILL WORK EVEN WHEN ADDING NEW ONES!
 
 if(isset($_GET['category']) && !isset($_GET['sort'])) {
   $sql = "SELECT * FROM posts WHERE post_category='$currentCategory' ORDER BY post_date DESC";
